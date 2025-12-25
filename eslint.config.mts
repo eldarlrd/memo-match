@@ -58,7 +58,7 @@ export default tseslint.config({
     'import/order': [1, { 'newlines-between': 'always', alphabetize: { order: 'asc' } }],
     'import/consistent-type-specifier-style': [1, 'prefer-inline'],
     'import/extensions': [1, 'ignorePackages'],
-    'import/no-useless-path-segments': 2,
+    'import/no-useless-path-segments': 1,
     'import/group-exports': 1,
     'react/sort-comp': 2,
     'react/jsx-pascal-case': 2,

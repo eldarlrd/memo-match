@@ -5,6 +5,7 @@
 > Memo Match is a game made with
 > - **[TypeScript](https://typescriptlang.org)**
 > - **[React](https://react.dev)**
+> - **[vanilla-extract](https://vanilla-extract.style)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
 > - **[Vite](https://vite.dev)**

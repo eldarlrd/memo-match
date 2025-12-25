@@ -1,7 +1,7 @@
 /**
  * @license AGPL-3.0-only
  * Memo Match - A Concentration game
- * Copyright (C) 2025 Eldar Pashazade <eldarlrd@pm.me>
+ * Copyright (C) 2026 Eldar Pashazade <eldarlrd@pm.me>
  *
  * This file is part of Memo Match.
  *
