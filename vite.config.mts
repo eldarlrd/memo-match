@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config
@@ -12,6 +13,7 @@ export default defineConfig({
         plugins: [['babel-plugin-react-compiler']],
       }
     }),
+    vanillaExtractPlugin(),
     VitePWA({
       srcDir: 'src',
       filename: 'sw.ts',

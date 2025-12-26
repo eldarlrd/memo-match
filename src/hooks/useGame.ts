@@ -1,0 +1,209 @@
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+
+import {
+  type GridSize,
+  TRIES_BY_SIZE,
+  CARDS,
+  getCardImageUrl
+} from '@/config/rules.ts';
+import { useSound } from '@/hooks/useSound';
+
+export interface Card {
+  id: number;
+  value: string;
+  imageUrl: string;
+  isFlipped: boolean;
+  isMatched: boolean;
+}
+
+const generateCards = (size: GridSize): Card[] => {
+  const numPairs = (size * size) / 2;
+  const selectedCards = [...CARDS]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, numPairs);
+
+  return [...selectedCards, ...selectedCards]
+    .sort(() => Math.random() - 0.5)
+    .map((value, index) => ({
+      id: index,
+      value,
+      imageUrl: getCardImageUrl(value),
+      isFlipped: false,
+      isMatched: false
+    }));
+};
+
+export const useGame = () => {
+  const [gridSize, setGridSize] = useState<GridSize>(4);
+  const [cards, setCards] = useState<Card[]>(() => generateCards(4));
+  const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
+  const [triesLeft, setTriesLeft] = useState<number>(TRIES_BY_SIZE[4]);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { playSound } = useSound(isMuted);
+  const hasPlayedEndSound = useRef(false);
+  const sessionRef = useRef(0);
+  const isResettingRef = useRef(false);
+
+  const preloadImages = useCallback((newCards: Card[]) => {
+    const imageUrls = Array.from(new Set(newCards.map(c => c.imageUrl)));
+
+    return Promise.all(
+      imageUrls.map(
+        url =>
+          new Promise(resolve => {
+            const img = new Image();
+
+            img.src = url;
+            img.onload = resolve;
+            img.onerror = resolve;
+          })
+      )
+    );
+  }, []);
+
+  useEffect(() => {
+    preloadImages(cards);
+  }, []);
+
+  const gameState = useMemo((): 'playing' | 'won' | 'lost' => {
+    if (cards.length > 0 && cards.every(card => card.isMatched)) return 'won';
+    if (triesLeft === 0 && flippedIndices.length === 0) return 'lost';
+
+    return 'playing';
+  }, [cards, triesLeft, flippedIndices]);
+
+  useEffect(() => {
+    if (gameState === 'playing') {
+      hasPlayedEndSound.current = false;
+    } else if (
+      (gameState === 'won' || gameState === 'lost') &&
+      !hasPlayedEndSound.current
+    ) {
+      playSound(gameState);
+      hasPlayedEndSound.current = true;
+    }
+  }, [gameState, playSound]);
+
+  useEffect(() => {
+    return () => {
+      sessionRef.current++;
+    };
+  }, []);
+
+  const initializeGame = useCallback(
+    (size: GridSize): void => {
+      sessionRef.current++;
+      const currentSession = sessionRef.current;
+
+      isResettingRef.current = true;
+      setIsLoading(true);
+      setGridSize(size);
+      setTriesLeft(TRIES_BY_SIZE[size]);
+
+      setCards(prev =>
+        prev.map(card => ({ ...card, isFlipped: false, isMatched: false }))
+      );
+      setFlippedIndices([]);
+      playSound('reset');
+
+      setTimeout(async () => {
+        if (sessionRef.current !== currentSession) return;
+        const newCards = generateCards(size);
+
+        await preloadImages(newCards);
+
+        if (sessionRef.current !== currentSession) return;
+
+        setCards(newCards);
+        isResettingRef.current = false;
+        setIsLoading(false);
+      }, 500);
+    },
+    [playSound, preloadImages]
+  );
+
+  const handleCardClick = (index: number): void => {
+    if (
+      gameState !== 'playing' ||
+      isResettingRef.current ||
+      isLoading ||
+      flippedIndices.length === 2 ||
+      cards[index].isFlipped ||
+      cards[index].isMatched
+    ) {
+      return;
+    }
+
+    playSound('reveal');
+    const newCards = [...cards];
+
+    newCards[index].isFlipped = true;
+    setCards(newCards);
+
+    const newFlippedIndices = [...flippedIndices, index];
+
+    setFlippedIndices(newFlippedIndices);
+
+    if (newFlippedIndices.length === 2) {
+      const currentSession = sessionRef.current;
+      const [firstIndex, secondIndex] = newFlippedIndices;
+
+      if (cards[firstIndex].value === cards[secondIndex].value) {
+        setTimeout(() => {
+          if (sessionRef.current !== currentSession) return;
+          setCards(prev => {
+            const updated = [...prev];
+
+            if (updated[firstIndex] && updated[secondIndex]) {
+              updated[firstIndex].isMatched = true;
+              updated[secondIndex].isMatched = true;
+            }
+
+            return updated;
+          });
+          setFlippedIndices([]);
+        }, 500);
+      } else {
+        setTriesLeft(prev => prev - 1);
+        setTimeout(() => {
+          if (sessionRef.current !== currentSession) return;
+          setCards(prev => {
+            const updated = [...prev];
+
+            if (updated[firstIndex] && updated[secondIndex]) {
+              updated[firstIndex].isFlipped = false;
+              updated[secondIndex].isFlipped = false;
+            }
+
+            return updated;
+          });
+          setFlippedIndices([]);
+        }, 1000);
+      }
+    }
+  };
+
+  const handleSizeChange = (size: GridSize): void => {
+    initializeGame(size);
+  };
+
+  const toggleMute = () => {
+    setIsMuted(prev => !prev);
+  };
+
+  return {
+    gridSize,
+    cards,
+    flippedIndices,
+    triesLeft,
+    isMuted,
+    isLoading,
+    gameState,
+    handleCardClick,
+    handleSizeChange,
+    initializeGame,
+    toggleMute
+  };
+};
