@@ -1,8 +1,8 @@
 import { type ReactElement } from 'react';
 
-import { Card } from '@/components/Card';
+import { Card } from '@/components/Card.tsx';
 import { type GridSize } from '@/config/rules.ts';
-import { type Card as CardType } from '@/hooks/useGame';
+import { type Card as CardType } from '@/hooks/useGame.ts';
 import * as styles from '@/styles/app.css.ts';
 
 interface BoardProps {
@@ -28,7 +28,7 @@ export const Board = ({
     return (
       <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
         {Array.from({ length: gridSize * gridSize }).map((_, index) => (
-          <div key={`skeleton-${index}`} className={styles.card}>
+          <div key={`skeleton-${index.toString()}`} className={styles.card}>
             <div className={styles.skeletonCard} />
           </div>
         ))}

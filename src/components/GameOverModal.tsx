@@ -23,7 +23,7 @@ export const GameOverModal = ({
         </h2>
         <p className={styles.modalText}>
           {gameState === 'won' ?
-            `Well done! You matched all cards with ${triesLeft} tries left.`
+            `Well done! You matched all cards with ${triesLeft.toString()} tries left.`
           : 'Better luck next time! Try again to beat the game.'}
         </p>
         <button className={styles.button} onClick={onRestart}>

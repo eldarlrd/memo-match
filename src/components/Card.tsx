@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 
-import { type Card as CardType } from '@/hooks/useGame';
+import { type Card as CardType } from '@/hooks/useGame.ts';
 import * as styles from '@/styles/app.css.ts';
 
 interface CardProps {

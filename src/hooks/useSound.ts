@@ -2,24 +2,20 @@ import { useCallback, useRef } from 'react';
 
 export type SoundType = 'reveal' | 'reset' | 'won' | 'lost';
 
-export const useSound = (isMuted: boolean) => {
+export const useSound = (
+  isMuted: boolean
+): { playSound: (type: SoundType) => void } => {
   const audioContextRef = useRef<AudioContext | null>(null);
 
   const playSound = useCallback(
     (type: SoundType) => {
       if (isMuted) return;
 
-      if (!audioContextRef.current) {
-        audioContextRef.current = new (
-          window.AudioContext || (window as any).webkitAudioContext
-        )();
-      }
+      audioContextRef.current ??= new window.AudioContext();
 
       const ctx = audioContextRef.current;
 
-      if (ctx.state === 'suspended') {
-        ctx.resume();
-      }
+      if (ctx.state === 'suspended') void ctx.resume();
 
       if (type === 'reveal') {
         const osc = ctx.createOscillator();
@@ -64,7 +60,7 @@ export const useSound = (isMuted: boolean) => {
           osc.start(ctx.currentTime + i * 0.1);
           osc.stop(ctx.currentTime + i * 0.1 + 0.2);
         });
-      } else if (type === 'lost') {
+      } else {
         [392, 349.23, 329.63, 261.63].forEach((freq, i) => {
           const osc = ctx.createOscillator();
           const g = ctx.createGain();

@@ -6,7 +6,7 @@ import {
   CARDS,
   getCardImageUrl
 } from '@/config/rules.ts';
-import { useSound } from '@/hooks/useSound';
+import { useSound } from '@/hooks/useSound.ts';
 
 export interface Card {
   id: number;
@@ -33,7 +33,19 @@ const generateCards = (size: GridSize): Card[] => {
     }));
 };
 
-export const useGame = () => {
+export const useGame = (): {
+  gridSize: 4 | 6;
+  cards: Card[];
+  flippedIndices: number[];
+  triesLeft: number;
+  isMuted: boolean;
+  isLoading: boolean;
+  gameState: 'playing' | 'won' | 'lost';
+  handleCardClick: (index: number) => void;
+  handleSizeChange: (size: GridSize) => void;
+  initializeGame: (size: GridSize) => void;
+  toggleMute: () => void;
+} => {
   const [gridSize, setGridSize] = useState<GridSize>(4);
   const [cards, setCards] = useState<Card[]>(() => generateCards(4));
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
@@ -64,8 +76,8 @@ export const useGame = () => {
   }, []);
 
   useEffect(() => {
-    preloadImages(cards);
-  }, []);
+    void preloadImages(cards);
+  }, [cards, preloadImages]);
 
   const gameState = useMemo((): 'playing' | 'won' | 'lost' => {
     if (cards.length > 0 && cards.every(card => card.isMatched)) return 'won';
@@ -77,20 +89,11 @@ export const useGame = () => {
   useEffect(() => {
     if (gameState === 'playing') {
       hasPlayedEndSound.current = false;
-    } else if (
-      (gameState === 'won' || gameState === 'lost') &&
-      !hasPlayedEndSound.current
-    ) {
+    } else if (gameState === 'won' && !hasPlayedEndSound.current) {
       playSound(gameState);
       hasPlayedEndSound.current = true;
     }
   }, [gameState, playSound]);
-
-  useEffect(() => {
-    return () => {
-      sessionRef.current++;
-    };
-  }, []);
 
   const initializeGame = useCallback(
     (size: GridSize): void => {
@@ -108,7 +111,7 @@ export const useGame = () => {
       setFlippedIndices([]);
       playSound('reset');
 
-      setTimeout(async () => {
+      const loadNewCards = async (): Promise<void> => {
         if (sessionRef.current !== currentSession) return;
         const newCards = generateCards(size);
 
@@ -119,6 +122,10 @@ export const useGame = () => {
         setCards(newCards);
         isResettingRef.current = false;
         setIsLoading(false);
+      };
+
+      setTimeout(() => {
+        void loadNewCards();
       }, 500);
     },
     [playSound, preloadImages]
@@ -189,7 +196,7 @@ export const useGame = () => {
     initializeGame(size);
   };
 
-  const toggleMute = () => {
+  const toggleMute = (): void => {
     setIsMuted(prev => !prev);
   };
 

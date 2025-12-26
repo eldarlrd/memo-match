@@ -29,7 +29,7 @@ const getCardImageUrl = (value: string): string => {
   const codeRank = rank === '10' ? '0' : rank;
   const codeSuit = suitMap[suitChar];
 
-  return `https://deckofcardsapi.com/static/img/${codeRank}${codeSuit}.png`;
+  return `https://deckofcardsapi.com/static/img/${codeRank}${codeSuit}.png`; // ! Check this
 };
 
 export {

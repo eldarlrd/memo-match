@@ -1,13 +1,13 @@
 import { type ReactElement } from 'react';
 
 import '@/styles/global.css.ts';
-import { Board } from '@/components/Board';
-import { Controls } from '@/components/Controls';
-import { Footer } from '@/components/Footer';
-import { GameOverModal } from '@/components/GameOverModal';
-import { Header } from '@/components/Header';
-import { useGame } from '@/hooks/useGame';
-import * as styles from '@/styles/app.css.ts';
+import { Board } from '@/components/Board.tsx';
+import { Controls } from '@/components/Controls.tsx';
+import { Footer } from '@/components/Footer.tsx';
+import { GameOverModal } from '@/components/GameOverModal.tsx';
+import { Header } from '@/components/Header.tsx';
+import { useGame } from '@/hooks/useGame.ts';
+import { container } from '@/styles/app.css.ts';
 
 const App = (): ReactElement => {
   const {
@@ -24,7 +24,7 @@ const App = (): ReactElement => {
   } = useGame();
 
   return (
-    <div className={styles.container}>
+    <div className={container}>
       <Header triesLeft={triesLeft} gridSize={gridSize} />
 
       <Controls
