@@ -1,3 +1,4 @@
+/// <reference types='vitest/config' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
@@ -10,7 +11,7 @@ export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [['babel-plugin-react-compiler']],
+        plugins: [['babel-plugin-react-compiler']]
       }
     }),
     vanillaExtractPlugin(),
@@ -25,5 +26,16 @@ export default defineConfig({
         globPatterns: ['**/*.{html,css,js,png,webp,woff2,webmanifest}']
       }
     })
-  ]
+  ],
+  // https://vitest.dev/config
+  // @ts-expect-error: test missing in config
+  test: {
+    globals: true,
+    restoreMocks: true,
+    environment: 'jsdom',
+    include: ['__tests__/**/*.{test,spec}.{ts,tsx}'],
+    coverage: {
+      include: ['src/hooks/*.{ts,tsx}']
+    }
+  }
 });

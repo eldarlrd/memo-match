@@ -6,17 +6,21 @@ import * as styles from '@/styles/app.css.ts';
 interface CardProps {
   card: CardType;
   onClick: () => void;
-  onKeyDown: (e: React.KeyboardEvent) => void;
+  index: number;
 }
 
-export const Card = ({ card, onClick, onKeyDown }: CardProps): ReactElement => {
+export const Card = ({ card, onClick, index }: CardProps): ReactElement => {
+  const label =
+    card.isMatched ? `Card ${(index + 1).toString()}: ${card.value} (Matched)`
+    : card.isFlipped ? `Card ${(index + 1).toString()}: ${card.value}`
+    : `Card ${(index + 1).toString()}: Back`;
+
   return (
-    <div
+    <button
       className={styles.card}
-      role='button'
-      tabIndex={0}
       onClick={onClick}
-      onKeyDown={onKeyDown}>
+      aria-label={label}
+      disabled={card.isMatched || card.isFlipped}>
       <div
         className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
         <div className={styles.cardFront}>
@@ -28,6 +32,6 @@ export const Card = ({ card, onClick, onKeyDown }: CardProps): ReactElement => {
         </div>
         <div className={styles.cardBack} />
       </div>
-    </div>
+    </button>
   );
 };

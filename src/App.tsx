@@ -1,12 +1,12 @@
 import { type ReactElement } from 'react';
 
 import '@/styles/global.css.ts';
+import { Footer } from '@/banners/Footer.tsx';
+import { Header } from '@/banners/Header.tsx';
 import { Board } from '@/components/Board.tsx';
 import { Controls } from '@/components/Controls.tsx';
-import { Footer } from '@/components/Footer.tsx';
-import { GameOverModal } from '@/components/GameOverModal.tsx';
-import { Header } from '@/components/Header.tsx';
 import { useGame } from '@/hooks/useGame.ts';
+import { GameOver } from '@/modals/GameOver.tsx';
 import { container } from '@/styles/app.css.ts';
 
 const App = (): ReactElement => {
@@ -48,7 +48,7 @@ const App = (): ReactElement => {
         onToggleMute={toggleMute}
       />
 
-      <GameOverModal
+      <GameOver
         gameState={gameState}
         triesLeft={triesLeft}
         onRestart={() => {

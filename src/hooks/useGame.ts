@@ -16,21 +16,29 @@ export interface Card {
   isMatched: boolean;
 }
 
+const shuffle = <T>(array: T[]): T[] => {
+  const result = [...array];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+};
+
 const generateCards = (size: GridSize): Card[] => {
   const numPairs = (size * size) / 2;
-  const selectedCards = [...CARDS]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, numPairs);
+  const selectedCards = shuffle([...CARDS]).slice(0, numPairs);
 
-  return [...selectedCards, ...selectedCards]
-    .sort(() => Math.random() - 0.5)
-    .map((value, index) => ({
-      id: index,
-      value,
-      imageUrl: getCardImageUrl(value),
-      isFlipped: false,
-      isMatched: false
-    }));
+  return shuffle([...selectedCards, ...selectedCards]).map((value, index) => ({
+    id: index,
+    value,
+    imageUrl: getCardImageUrl(value),
+    isFlipped: false,
+    isMatched: false
+  }));
 };
 
 export const useGame = (): {

@@ -36,8 +36,17 @@ const card = style({
   aspectRatio: '3/4',
   position: 'relative',
   transition: 'transform 0.2s',
+  border: 'none',
+  background: 'none',
+  padding: 0,
+  width: '100%',
   ':hover': {
     transform: 'translateY(-2px)'
+  },
+  ':focus-visible': {
+    outline: `3px solid white`,
+    outlineOffset: '4px',
+    borderRadius: vars.borderRadius.md
   }
 });
 

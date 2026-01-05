@@ -18,12 +18,6 @@ export const Board = ({
   isLoading,
   onCardClick
 }: BoardProps): ReactElement => {
-  const handleKeyDown = (event: React.KeyboardEvent, index: number): void => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      onCardClick(index);
-    }
-  };
-
   if (isLoading) {
     return (
       <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
@@ -42,11 +36,9 @@ export const Board = ({
         <Card
           key={card.id}
           card={card}
+          index={index}
           onClick={() => {
             onCardClick(index);
-          }}
-          onKeyDown={e => {
-            handleKeyDown(e, index);
           }}
         />
       ))}

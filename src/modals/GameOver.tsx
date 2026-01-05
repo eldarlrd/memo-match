@@ -2,23 +2,27 @@ import { type ReactElement } from 'react';
 
 import * as styles from '@/styles/app.css.ts';
 
-interface GameOverModalProps {
+interface GameOverProps {
   gameState: 'won' | 'lost' | 'playing';
   triesLeft: number;
   onRestart: () => void;
 }
 
-export const GameOverModal = ({
+export const GameOver = ({
   gameState,
   triesLeft,
   onRestart
-}: GameOverModalProps): ReactElement | null => {
+}: GameOverProps): ReactElement | null => {
   if (gameState !== 'won' && gameState !== 'lost') return null;
 
   return (
-    <div className={styles.modalOverlay}>
+    <div
+      className={styles.modalOverlay}
+      role='dialog'
+      aria-modal='true'
+      aria-labelledby='modal-title'>
       <div className={styles.modal}>
-        <h2 className={styles.modalTitle}>
+        <h2 id='modal-title' className={styles.modalTitle}>
           {gameState === 'won' ? '🎉 You Won!' : '💀 Game Over!'}
         </h2>
         <p className={styles.modalText}>

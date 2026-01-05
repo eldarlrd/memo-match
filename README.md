@@ -37,6 +37,15 @@ bun fix
 ```sh
 bun orphans
 ```
+## Test
+### Run Watch
+```sh
+bun spec
+```
+### Coverage Report
+```sh
+bun cover
+```
 ## Deploy
 ```sh
 bun deployer
