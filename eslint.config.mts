@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import vitest from '@vitest/eslint-plugin';
+import { defineConfig } from 'eslint/config';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { flatConfigs } from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -10,10 +11,10 @@ import pluginPromise from 'eslint-plugin-promise';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
 import globals from 'globals';
-import tseslint, { type Config } from 'typescript-eslint';
 
-export default tseslint.config({
+export default defineConfig({
   extends: [
     js.configs.recommended,
     ...tseslint.configs.strictTypeChecked,
@@ -21,6 +22,7 @@ export default tseslint.config({
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
     flatConfigs.recommended,
+    reactHooks.configs.flat['recommended-latest'],
     nodePlugin.configs['flat/recommended-module'],
     pluginPromise.configs['flat/recommended'],
     jsxA11y.flatConfigs.strict,
@@ -48,7 +50,6 @@ export default tseslint.config({
   },
   plugins: {
     'no-relative-import-paths': noRelativeImportPaths,
-    'react-hooks': reactHooks,
     'react-refresh': reactRefresh
   },
   rules: {
@@ -87,7 +88,6 @@ export default tseslint.config({
     'react/prefer-stateless-function': 2,
     'react/no-multi-comp': [2, { ignoreStateless: true }],
     'react/jsx-no-bind': [2, { allowArrowFunctions: true }],
-    ...reactHooks.configs.recommended.rules,
     'react-refresh/only-export-components': [2, { allowConstantExport: true }],
     'n/no-unsupported-features/node-builtins': 0,
     'n/no-missing-import': 0,
@@ -109,4 +109,4 @@ export default tseslint.config({
     ],
     eqeqeq: 2
   }
-}) as Config;
+});

@@ -12,7 +12,6 @@ export const useSound = (
       if (isMuted) return;
 
       audioContextRef.current ??= new window.AudioContext();
-
       const ctx = audioContextRef.current;
 
       if (ctx.state === 'suspended') void ctx.resume();

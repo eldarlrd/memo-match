@@ -1,4 +1,3 @@
-/// <reference types='vitest/config' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
@@ -27,8 +26,8 @@ export default defineConfig({
       }
     })
   ],
-  // https://vitest.dev/config
   // @ts-expect-error: test missing in config
+  // https://vitest.dev/config
   test: {
     globals: true,
     restoreMocks: true,
