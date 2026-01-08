@@ -16,17 +16,32 @@ const board = style({
   gap: vars.spacing.md,
   width: '100%',
   maxWidth: '800px',
-  containerType: 'inline-size'
+  containerType: 'inline-size',
+  '@media': {
+    'screen and (max-width: 600px)': {
+      gap: vars.spacing.sm
+    }
+  }
 });
 
 const boardSize = styleVariants({
   4: {
     gridTemplateColumns: 'repeat(4, 1fr)',
-    maxWidth: '500px'
+    maxWidth: '500px',
+    '@media': {
+      'screen and (max-width: 500px)': {
+        maxWidth: '320px'
+      }
+    }
   },
   6: {
     gridTemplateColumns: 'repeat(6, 1fr)',
-    maxWidth: '700px'
+    maxWidth: '700px',
+    '@media': {
+      'screen and (max-width: 700px)': {
+        maxWidth: '450px'
+      }
+    }
   }
 });
 
@@ -51,13 +66,13 @@ const card = style({
 });
 
 const pulse = keyframes({
-  '0%': { opacity: 0.3 },
-  '50%': { opacity: 0.6 },
-  '100%': { opacity: 0.3 }
+  '0%': { opacity: 0.4 },
+  '50%': { opacity: 0.7 },
+  '100%': { opacity: 0.4 }
 });
 
 const skeletonCard = style({
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backgroundColor: 'rgba(255, 255, 255, 0.2)',
   borderRadius: vars.borderRadius.md,
   width: '100%',
   height: '100%',
@@ -87,8 +102,9 @@ const cardFaceBase = style({
   justifyContent: 'center',
   borderRadius: vars.borderRadius.md,
   boxShadow:
-    '0 4px 6px -1px rgb(249 115 22 / 0.1), 0 2px 4px -2px rgb(249 115 22 / 0.1)',
-  border: `2px solid ${vars.colors.primaryLight}`
+    '0 4px 6px -1px rgb(220 38 38 / 0.1), 0 2px 4px -2px rgb(220 38 38 / 0.1)',
+  border: `2px solid ${vars.colors.primaryLight}`,
+  transition: 'background-color 0.6s ease, border-color 0.6s ease'
 });
 
 const cardFront = style([
@@ -100,6 +116,11 @@ const cardFront = style([
     boxSizing: 'border-box'
   }
 ]);
+
+const cardMatched = style({
+  backgroundColor: `${vars.colors.matched} !important`,
+  borderColor: `${vars.colors.matchedBorder} !important`
+});
 
 const cardImage = style({
   width: '100%',
@@ -113,8 +134,8 @@ const cardBack = style([
     backgroundColor: vars.colors.cardBack,
     color: 'white',
     backgroundImage: `
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 10px),
-      repeating-linear-gradient(-45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 10px)
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px)
     `,
     border: '4px solid white',
     boxSizing: 'border-box'
@@ -126,8 +147,7 @@ const controls = style({
   gap: vars.spacing.md,
   alignItems: 'center',
   flexWrap: 'wrap',
-  justifyContent: 'center',
-  marginBottom: vars.spacing.md
+  justifyContent: 'center'
 });
 
 const footerControls = style({
@@ -183,7 +203,8 @@ const info = style({
   backgroundColor: vars.colors.primaryLight,
   padding: `${vars.spacing.xs} ${vars.spacing.md}`,
   borderRadius: vars.borderRadius.full,
-  border: `2px solid ${vars.colors.primary}`
+  border: `2px solid ${vars.colors.primary}`,
+  marginBottom: vars.spacing.sm
 });
 
 const title = style({
@@ -245,6 +266,7 @@ export {
   card,
   cardInner,
   cardFlipped,
+  cardMatched,
   cardFront,
   cardImage,
   cardBack,

@@ -6,7 +6,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vite.dev/config
 export default defineConfig({
   base: '/memo-match/',
-  resolve: { alias: { '@': '/src' } },
+  resolve: {
+    alias: { '@': '/src', '#': '/src/assets' }
+  },
   plugins: [
     react({
       babel: {

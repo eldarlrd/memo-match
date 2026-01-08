@@ -7,10 +7,9 @@ const GRID_LABELS: Record<GridSize, string> = {
   6: 'Large'
 };
 
-const TRIES_BY_SIZE: Record<GridSize, number> = {
-  4: 10,
-  6: 25
-};
+const TRIES_BY_SIZE: Record<GridSize, number> = Object.fromEntries(
+  GRID_SIZES.map(size => [size, Math.floor(((size * size) / 2) * 3.5 - 3)])
+) as Record<GridSize, number>;
 
 const SUITS = ['♠', '♥', '♦', '♣'];
 const RANKS = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];

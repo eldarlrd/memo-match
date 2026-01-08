@@ -2,14 +2,15 @@ import { createGlobalTheme } from '@vanilla-extract/css';
 
 export const vars = createGlobalTheme(':root', {
   colors: {
-    primary: '#fb923c', // orange-400
-    primaryHover: '#f97316', // orange-500
-    primaryLight: '#ffedd5', // orange-100
-    background: '#ea580c', // orange-600, more saturated
+    primary: '#dc2626', // red-600
+    primaryHover: '#b91c1c', // red-700
+    primaryLight: '#fee2e2', // red-100
+    background: '#ea580c', // orange-600
     text: '#fff',
     cardBack: '#dc2626', // red-600, brighter red
     cardFront: '#fff',
-    matched: '#ffedd5',
+    matched: '#1d4ed8', // blue-700
+    matchedBorder: '#3b82f6', // blue-500
     error: '#ef4444',
     cardRed: '#dc2626', // red-600
     cardBlack: '#171717' // neutral-900

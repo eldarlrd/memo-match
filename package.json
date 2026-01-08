@@ -1,7 +1,7 @@
 {
   "name": "memo-match",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "keywords": [
     "concentration",
@@ -34,6 +34,7 @@
     "experimentalTernaries": true
   },
   "dependencies": {
+    "@fontsource-variable/dynapuff": "^5.2.8",
     "@vanilla-extract/css": "^1.18.0",
     "modern-normalize": "^3.0.1",
     "react": "^19.2.3",

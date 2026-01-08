@@ -8,6 +8,7 @@ import { Controls } from '@/components/Controls.tsx';
 import { useGame } from '@/hooks/useGame.ts';
 import { GameOver } from '@/modals/GameOver.tsx';
 import { container } from '@/styles/app.css.ts';
+import '@fontsource-variable/dynapuff/index.css';
 
 const App = (): ReactElement => {
   const {
@@ -25,12 +26,13 @@ const App = (): ReactElement => {
 
   return (
     <div className={container}>
-      <Header triesLeft={triesLeft} gridSize={gridSize} />
+      <Header />
 
       <Controls
         currentGridSize={gridSize}
         gameState={gameState}
         onSizeChange={handleSizeChange}
+        triesLeft={triesLeft}
       />
 
       <Board

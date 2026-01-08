@@ -23,7 +23,8 @@ export const Card = ({ card, onClick, index }: CardProps): ReactElement => {
       disabled={card.isMatched || card.isFlipped}>
       <div
         className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
-        <div className={styles.cardFront}>
+        <div
+          className={`${styles.cardFront} ${card.isMatched ? styles.cardMatched : ''}`}>
           <img
             src={card.imageUrl}
             alt={card.value}

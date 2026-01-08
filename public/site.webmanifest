@@ -1,0 +1,21 @@
+{
+  "name": "Memo Match",
+  "short_name": "Memo Match",
+  "dir": "ltr",
+  "lang": "en",
+  "categories": ["entertainment", "games"],
+  "display": "fullscreen",
+  "orientation": "natural",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "description": "A Concentration game",
+  "start_url": "https://eldarlrd.is-a.dev/memo-match/",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}

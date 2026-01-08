@@ -95,9 +95,8 @@ export const useGame = (): {
   }, [cards, triesLeft, flippedIndices]);
 
   useEffect(() => {
-    if (gameState === 'playing') {
-      hasPlayedEndSound.current = false;
-    } else if (gameState === 'won' && !hasPlayedEndSound.current) {
+    if (gameState === 'playing') hasPlayedEndSound.current = false;
+    else if (!hasPlayedEndSound.current) {
       playSound(gameState);
       hasPlayedEndSound.current = true;
     }
