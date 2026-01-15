@@ -1,21 +1,10 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import {
-  GRID_SIZES,
-  GRID_LABELS,
-  TRIES_BY_SIZE,
-  type GridSize
-} from '@/config/rules.ts';
+import { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE } from '@/config/rules.ts';
+import type { ControlsProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-interface ControlsProps {
-  currentGridSize: GridSize;
-  gameState: 'playing' | 'won' | 'lost';
-  onSizeChange: (size: GridSize) => void;
-  triesLeft: number;
-}
-
-export const Controls = ({
+const Controls = ({
   currentGridSize,
   gameState,
   onSizeChange,
@@ -31,6 +20,8 @@ export const Controls = ({
 
   return (
     <>
+      <h1 className={styles.title}>Memo Match</h1>
+
       <div className={styles.controls}>
         {GRID_SIZES.map(size => (
           <button
@@ -51,3 +42,5 @@ export const Controls = ({
     </>
   );
 };
+
+export default Controls;

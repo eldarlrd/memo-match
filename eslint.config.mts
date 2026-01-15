@@ -68,7 +68,7 @@ export default defineConfig({
       1,
       { 'newlines-between': 'always', alphabetize: { order: 'asc' } }
     ],
-    'import/consistent-type-specifier-style': [1, 'prefer-inline'],
+    'import/consistent-type-specifier-style': [1, 'prefer-top-level'],
     'import/extensions': [1, 'ignorePackages'],
     'import/no-useless-path-segments': 1,
     'import/group-exports': 1,

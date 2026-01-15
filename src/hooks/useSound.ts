@@ -5,7 +5,7 @@ import loss from '#/sfx/loss.opus';
 import shuffle from '#/sfx/shuffle.opus';
 import win from '#/sfx/win.opus';
 
-export type SoundType = 'reveal' | 'reset' | 'won' | 'lost';
+type SoundType = 'reveal' | 'reset' | 'won' | 'lost';
 
 const SFX_MAP: Record<SoundType, string> = {
   reveal: flip,
@@ -14,7 +14,7 @@ const SFX_MAP: Record<SoundType, string> = {
   lost: loss
 };
 
-export const useSound = (
+const useSound = (
   isMuted: boolean
 ): { playSound: (type: SoundType) => void } => {
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -61,3 +61,5 @@ export const useSound = (
 
   return { playSound };
 };
+
+export default useSound;

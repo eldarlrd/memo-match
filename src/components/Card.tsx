@@ -1,15 +1,9 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { type Card as CardType } from '@/hooks/useGame.ts';
+import type { CardProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-interface CardProps {
-  card: CardType;
-  onClick: () => void;
-  index: number;
-}
-
-export const Card = ({ card, onClick, index }: CardProps): ReactElement => {
+const Card = ({ card, onClick, index }: CardProps): ReactElement => {
   const label =
     card.isMatched ? `Card ${(index + 1).toString()}: ${card.value} (Matched)`
     : card.isFlipped ? `Card ${(index + 1).toString()}: ${card.value}`
@@ -36,3 +30,5 @@ export const Card = ({ card, onClick, index }: CardProps): ReactElement => {
     </button>
   );
 };
+
+export default Card;

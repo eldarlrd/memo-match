@@ -1,18 +1,10 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { Card } from '@/components/Card.tsx';
-import { type GridSize } from '@/config/rules.ts';
-import { type Card as CardType } from '@/hooks/useGame.ts';
+import Card from '@/components/Card.tsx';
+import type { BoardProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-interface BoardProps {
-  cards: CardType[];
-  gridSize: GridSize;
-  isLoading: boolean;
-  onCardClick: (index: number) => void;
-}
-
-export const Board = ({
+const Board = ({
   cards,
   gridSize,
   isLoading,
@@ -45,3 +37,5 @@ export const Board = ({
     </div>
   );
 };
+
+export default Board;

@@ -1,14 +1,9 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
+import type { FooterProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-interface FooterProps {
-  isMuted: boolean;
-  onReset: () => void;
-  onToggleMute: () => void;
-}
-
-export const Footer = ({
+const Footer = ({
   isMuted,
   onReset,
   onToggleMute
@@ -27,3 +22,5 @@ export const Footer = ({
     </div>
   );
 };
+
+export default Footer;

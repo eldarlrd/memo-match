@@ -1,14 +1,9 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
+import type { GameOverProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-interface GameOverProps {
-  gameState: 'won' | 'lost' | 'playing';
-  triesLeft: number;
-  onRestart: () => void;
-}
-
-export const GameOver = ({
+const GameOver = ({
   gameState,
   triesLeft,
   onRestart
@@ -37,3 +32,5 @@ export const GameOver = ({
     </div>
   );
 };
+
+export default GameOver;

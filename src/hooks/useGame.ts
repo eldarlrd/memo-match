@@ -1,20 +1,8 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 
-import {
-  type GridSize,
-  TRIES_BY_SIZE,
-  CARDS,
-  getCardImageUrl
-} from '@/config/rules.ts';
-import { useSound } from '@/hooks/useSound.ts';
-
-export interface Card {
-  id: number;
-  value: string;
-  imageUrl: string;
-  isFlipped: boolean;
-  isMatched: boolean;
-}
+import { TRIES_BY_SIZE, CARDS, getCardImageUrl } from '@/config/rules.ts';
+import type { Card, GridSize } from '@/config/types.ts';
+import useSound from '@/hooks/useSound.ts';
 
 const shuffle = <T>(array: T[]): T[] => {
   const result = [...array];
@@ -41,7 +29,7 @@ const generateCards = (size: GridSize): Card[] => {
   }));
 };
 
-export const useGame = (): {
+const useGame = (): {
   gridSize: 4 | 6;
   cards: Card[];
   flippedIndices: number[];
@@ -221,3 +209,5 @@ export const useGame = (): {
     toggleMute
   };
 };
+
+export default useGame;

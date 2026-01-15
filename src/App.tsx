@@ -1,12 +1,11 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import '@/styles/global.css.ts';
-import { Footer } from '@/banners/Footer.tsx';
-import { Header } from '@/banners/Header.tsx';
-import { Board } from '@/components/Board.tsx';
-import { Controls } from '@/components/Controls.tsx';
-import { useGame } from '@/hooks/useGame.ts';
-import { GameOver } from '@/modals/GameOver.tsx';
+import Controls from '@/banners/Controls.tsx';
+import Footer from '@/banners/Footer.tsx';
+import Board from '@/components/Board.tsx';
+import useGame from '@/hooks/useGame.ts';
+import GameOver from '@/modals/GameOver.tsx';
 import { container } from '@/styles/app.css.ts';
 import '@fontsource-variable/dynapuff/index.css';
 
@@ -26,8 +25,6 @@ const App = (): ReactElement => {
 
   return (
     <div className={container}>
-      <Header />
-
       <Controls
         currentGridSize={gridSize}
         gameState={gameState}

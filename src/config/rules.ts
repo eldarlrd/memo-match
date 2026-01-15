@@ -1,10 +1,10 @@
+import type { GridSize } from '@/config/types.ts';
+
 const GRID_SIZES = [4, 6] as const;
 
-type GridSize = (typeof GRID_SIZES)[number];
-
 const GRID_LABELS: Record<GridSize, string> = {
-  4: 'Standard',
-  6: 'Large'
+  4: 'Normal',
+  6: 'Hard'
 };
 
 const TRIES_BY_SIZE: Record<GridSize, number> = Object.fromEntries(
@@ -23,6 +23,7 @@ const getCardImageUrl = (value: string): string => {
     '♦': 'D',
     '♣': 'C'
   };
+
   const rank = value.slice(0, -1);
   const suitChar = value.slice(-1);
   const codeRank = rank === '10' ? '0' : rank;
@@ -31,11 +32,4 @@ const getCardImageUrl = (value: string): string => {
   return `https://deckofcardsapi.com/static/img/${codeRank}${codeSuit}.png`; // ! Check this
 };
 
-export {
-  GRID_SIZES,
-  type GridSize,
-  GRID_LABELS,
-  TRIES_BY_SIZE,
-  CARDS,
-  getCardImageUrl
-};
+export { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE, CARDS, getCardImageUrl };
