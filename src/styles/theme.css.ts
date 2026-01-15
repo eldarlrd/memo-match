@@ -29,10 +29,16 @@ export const vars = createGlobalTheme(':root', {
     xxl: '1rem',
     full: 'calc(infinity * 1px)'
   },
+  screen: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px'
+  },
   responsive: {
-    sm: '(min-width: 40rem)',
-    md: '(min-width: 48rem)',
-    lg: '(min-width: 64rem)',
-    xl: '(min-width: 80rem)'
+    sm: '(min-width: 640px)',
+    md: '(min-width: 768px)',
+    lg: '(min-width: 1024px)',
+    xl: '(min-width: 1280px)'
   }
 });

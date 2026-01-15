@@ -7,7 +7,7 @@ const container = style({
   flexDirection: 'column',
   alignItems: 'center',
   gap: vars.spacing.lg,
-  maxWidth: '800px',
+  maxWidth: vars.responsive.md,
   width: '100%'
 });
 
@@ -15,7 +15,7 @@ const board = style({
   display: 'grid',
   gap: vars.spacing.md,
   width: '100%',
-  maxWidth: '800px',
+  maxWidth: vars.spacing.lg,
   containerType: 'inline-size',
   '@media': {
     'screen and (max-width: 600px)': {
