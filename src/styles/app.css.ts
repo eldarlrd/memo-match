@@ -103,14 +103,14 @@ const cardFaceBase = style({
   borderRadius: vars.borderRadius.md,
   boxShadow:
     '0 4px 6px -1px rgb(220 38 38 / 0.1), 0 2px 4px -2px rgb(220 38 38 / 0.1)',
-  border: `2px solid ${vars.colors.primaryLight}`,
+  border: `2px solid ${vars.colors.rose}`,
   transition: 'background-color 0.6s ease, border-color 0.6s ease'
 });
 
-const cardFront = style([
+const white = style([
   cardFaceBase,
   {
-    backgroundColor: vars.colors.cardFront,
+    backgroundColor: vars.colors.white,
     transform: 'rotateY(180deg)',
     padding: vars.spacing.xs,
     boxSizing: 'border-box'
@@ -118,8 +118,8 @@ const cardFront = style([
 ]);
 
 const cardMatched = style({
-  backgroundColor: `${vars.colors.matched} !important`,
-  borderColor: `${vars.colors.matchedBorder} !important`
+  backgroundColor: `${vars.colors.blue} !important`,
+  borderColor: `${vars.colors.sky} !important`
 });
 
 const cardImage = style({
@@ -128,10 +128,10 @@ const cardImage = style({
   objectFit: 'contain'
 });
 
-const cardBack = style([
+const red = style([
   cardFaceBase,
   {
-    backgroundColor: vars.colors.cardBack,
+    backgroundColor: vars.colors.red,
     color: 'white',
     backgroundImage: `
       repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px),
@@ -161,7 +161,7 @@ const footerControls = style({
 
 const button = style({
   padding: `${vars.spacing.sm} ${vars.spacing.lg}`,
-  backgroundColor: vars.colors.primary,
+  backgroundColor: vars.colors.red,
   color: 'white',
   border: 'none',
   borderRadius: vars.borderRadius.full,
@@ -174,7 +174,7 @@ const button = style({
   alignItems: 'center',
   justifyContent: 'center',
   ':hover': {
-    backgroundColor: vars.colors.primaryHover,
+    backgroundColor: vars.colors.maroon,
     transform: 'translateY(-1px)',
     boxShadow: '0 4px 6px rgba(0,0,0,0.15)'
   },
@@ -182,7 +182,7 @@ const button = style({
     transform: 'translateY(0)'
   },
   ':disabled': {
-    backgroundColor: vars.colors.matched,
+    backgroundColor: vars.colors.blue,
     cursor: 'not-allowed',
     transform: 'none',
     boxShadow: 'none'
@@ -199,11 +199,11 @@ const muteButton = style({
 const info = style({
   fontSize: '1.2rem',
   fontWeight: 'bold',
-  color: vars.colors.cardBlack,
-  backgroundColor: vars.colors.primaryLight,
+  color: vars.colors.black,
+  backgroundColor: vars.colors.rose,
   padding: `${vars.spacing.xs} ${vars.spacing.md}`,
   borderRadius: vars.borderRadius.full,
-  border: `2px solid ${vars.colors.primary}`,
+  border: `2px solid ${vars.colors.red}`,
   marginBottom: vars.spacing.sm
 });
 
@@ -214,7 +214,7 @@ const title = style({
   textAlign: 'center',
   fontWeight: 800,
   letterSpacing: '-0.02em',
-  textShadow: `3px 3px 0px ${vars.colors.primary}`
+  textShadow: `3px 3px 0px ${vars.colors.red}`
 });
 
 const modalOverlay = style({
@@ -232,7 +232,7 @@ const modalOverlay = style({
 });
 
 const modal = style({
-  backgroundColor: vars.colors.cardFront,
+  backgroundColor: vars.colors.white,
   padding: vars.spacing.xl,
   borderRadius: vars.borderRadius.lg,
   boxShadow:
@@ -243,19 +243,19 @@ const modal = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing.md,
-  border: `4px solid ${vars.colors.primary}`
+  border: `4px solid ${vars.colors.red}`
 });
 
 const modalTitle = style({
   fontSize: '2rem',
-  color: vars.colors.primary,
+  color: vars.colors.red,
   margin: 0,
   fontWeight: 800
 });
 
 const modalText = style({
   fontSize: '1.2rem',
-  color: vars.colors.cardBlack,
+  color: vars.colors.black,
   margin: 0
 });
 
@@ -267,9 +267,9 @@ export {
   cardInner,
   cardFlipped,
   cardMatched,
-  cardFront,
+  white,
   cardImage,
-  cardBack,
+  red,
   skeletonCard,
   controls,
   footerControls,

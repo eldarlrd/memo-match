@@ -18,14 +18,14 @@ const Card = ({ card, onClick, index }: CardProps): ReactElement => {
       <div
         className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
         <div
-          className={`${styles.cardFront} ${card.isMatched ? styles.cardMatched : ''}`}>
+          className={`${styles.white} ${card.isMatched ? styles.cardMatched : ''}`}>
           <img
             src={card.imageUrl}
             alt={card.value}
             className={styles.cardImage}
           />
         </div>
-        <div className={styles.cardBack} />
+        <div className={styles.red} />
       </div>
     </button>
   );

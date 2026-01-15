@@ -10,13 +10,13 @@ const glowAnimation = keyframes({
 });
 
 globalStyle('body', {
-  backgroundColor: vars.colors.background,
+  backgroundColor: vars.colors.orange,
   backgroundImage:
     'radial-gradient(ellipse at 50% 0%, #fb923c 0%, transparent 75%)',
   backgroundSize: '150% 100%',
   backgroundAttachment: 'fixed',
   animation: `${glowAnimation} 10s ease-in-out infinite`,
-  color: vars.colors.text,
+  color: vars.colors.white,
   fontFamily: "'DynaPuff Variable', sans-serif",
   margin: 0,
   padding: 0,

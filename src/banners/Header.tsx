@@ -4,7 +4,7 @@ import { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE } from '@/config/rules.ts';
 import type { ControlsProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-const Controls = ({
+const Header = ({
   currentGridSize,
   gameState,
   onSizeChange,
@@ -43,4 +43,4 @@ const Controls = ({
   );
 };
 
-export default Controls;
+export default Header;

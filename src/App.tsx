@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 
 import '@/styles/global.css.ts';
-import Controls from '@/banners/Controls.tsx';
 import Footer from '@/banners/Footer.tsx';
+import Header from '@/banners/Header.tsx';
 import Board from '@/components/Board.tsx';
 import useGame from '@/hooks/useGame.ts';
 import GameOver from '@/modals/GameOver.tsx';
@@ -11,25 +11,25 @@ import '@fontsource-variable/dynapuff/index.css';
 
 const App = (): ReactElement => {
   const {
+    gameState,
+    triesLeft,
     gridSize,
     cards,
-    triesLeft,
-    isMuted,
     isLoading,
-    gameState,
-    handleCardClick,
+    isMuted,
     handleSizeChange,
+    handleCardClick,
     initializeGame,
     toggleMute
   } = useGame();
 
   return (
     <div className={container}>
-      <Controls
-        currentGridSize={gridSize}
+      <Header
         gameState={gameState}
-        onSizeChange={handleSizeChange}
         triesLeft={triesLeft}
+        currentGridSize={gridSize}
+        onSizeChange={handleSizeChange}
       />
 
       <Board
@@ -39,18 +39,18 @@ const App = (): ReactElement => {
         onCardClick={handleCardClick}
       />
 
-      <Footer
-        isMuted={isMuted}
-        onReset={() => {
-          initializeGame(gridSize);
-        }}
-        onToggleMute={toggleMute}
-      />
-
       <GameOver
         gameState={gameState}
         triesLeft={triesLeft}
         onRestart={() => {
+          initializeGame(gridSize);
+        }}
+      />
+
+      <Footer
+        isMuted={isMuted}
+        onToggleMute={toggleMute}
+        onReset={() => {
           initializeGame(gridSize);
         }}
       />
