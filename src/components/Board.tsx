@@ -10,7 +10,7 @@ const Board = ({
   isLoading,
   onCardClick
 }: BoardProps): ReactElement => {
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
         {Array.from({ length: gridSize * gridSize }).map((_, index) => (
@@ -20,7 +20,6 @@ const Board = ({
         ))}
       </div>
     );
-  }
 
   return (
     <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>

@@ -14,7 +14,7 @@ const Card = ({ card, onClick, index }: CardProps): ReactElement => {
       className={styles.card}
       onClick={onClick}
       aria-label={label}
-      disabled={card.isMatched || card.isFlipped}>
+      disabled={card.isMatched}>
       <div
         className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
         <div

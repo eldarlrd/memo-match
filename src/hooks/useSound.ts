@@ -39,9 +39,8 @@ const useSound = (
 
       const cachedBuffer = buffersRef.current.get(type);
 
-      if (cachedBuffer) {
-        playBuffer(cachedBuffer);
-      } else {
+      if (cachedBuffer) playBuffer(cachedBuffer);
+      else {
         void fetch(SFX_MAP[type])
           .then(res => res.arrayBuffer())
           .then(data => ctx.decodeAudioData(data))

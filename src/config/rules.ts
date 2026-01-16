@@ -32,4 +32,13 @@ const getCardImageUrl = (value: string): string => {
   return `https://deckofcardsapi.com/static/img/${codeRank}${codeSuit}.png`; // ! Check this
 };
 
-export { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE, CARDS, getCardImageUrl };
+const AUTO_CLOSE_TIMEOUT = 3000;
+
+export {
+  GRID_SIZES,
+  GRID_LABELS,
+  TRIES_BY_SIZE,
+  CARDS,
+  getCardImageUrl,
+  AUTO_CLOSE_TIMEOUT
+};
