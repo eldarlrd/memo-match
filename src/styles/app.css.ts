@@ -208,27 +208,26 @@ const info = style({
 });
 
 const title = style({
-  fontSize: 'clamp(2.5rem, 8vw, 4rem)',
-  color: 'white',
   margin: 0,
-  textAlign: 'center',
   fontWeight: 800,
-  letterSpacing: '-0.02em',
+  textAlign: 'center',
+  color: vars.colors.white,
+  fontSize: 'clamp(3rem, 10vw, 4rem)',
   textShadow: `3px 3px 0px ${vars.colors.red}`
 });
 
 const modalOverlay = style({
-  position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(67, 20, 7, 0.4)',
+  zIndex: 1,
+  position: 'fixed',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: 1000,
-  backdropFilter: 'blur(4px)'
+  backdropFilter: 'blur(4px)',
+  backgroundColor: vars.colors.brownOpaque
 });
 
 const modal = style({

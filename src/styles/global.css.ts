@@ -10,27 +10,27 @@ const glowAnimation = keyframes({
 });
 
 globalStyle('body', {
-  backgroundColor: vars.colors.orange,
-  backgroundImage:
-    'radial-gradient(ellipse at 50% 0%, #fb923c 0%, transparent 75%)',
-  backgroundSize: '150% 100%',
-  backgroundAttachment: 'fixed',
-  animation: `${glowAnimation} 10s ease-in-out infinite`,
-  color: vars.colors.white,
   fontFamily: "'DynaPuff Variable', sans-serif",
-  margin: 0,
-  padding: 0,
-  minHeight: '100vh',
-  display: 'flex',
+  backgroundImage: `radial-gradient(ellipse at 50% 0%, ${vars.colors.ginger} 0%, transparent 75%)`,
+  animation: `${glowAnimation} 10s ease-in-out infinite`,
+  backgroundColor: vars.colors.orange,
+  backgroundAttachment: 'fixed',
+  backgroundSize: '150% 100%',
+  color: vars.colors.white,
+  minHeight: '100dvh',
   flexDirection: 'column',
+  justifyContent: 'center',
   alignItems: 'center',
-  justifyContent: 'center'
+  display: 'flex',
+  padding: 0,
+  margin: 0
 });
 
 globalStyle('#root', {
-  width: '100%',
+  width: '90%',
   display: 'flex',
-  flexDirection: 'column',
+  userSelect: 'none',
   alignItems: 'center',
+  flexDirection: 'column',
   padding: vars.spacing.md
 });

@@ -10,7 +10,9 @@ export const vars = createGlobalTheme(':root', {
     maroon: '#b91c1c', // red-700
     sky: '#3b82f6', // blue-500
     blue: '#1d4ed8', // blue-700
-    orange: '#ea580c' // orange-600
+    ginger: '#fb923c', // orange-400
+    orange: '#ea580c', // orange-600
+    brownOpaque: '#43140766' // orange-950/40%
   },
   spacing: {
     xs: '.25rem',
