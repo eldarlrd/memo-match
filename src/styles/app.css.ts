@@ -6,7 +6,8 @@ const container = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: vars.spacing.lg,
+  justifyContent: 'space-between',
+  gap: vars.spacing.xl,
   maxWidth: vars.responsive.md,
   width: '100%'
 });
@@ -150,12 +151,11 @@ const controls = style({
   justifyContent: 'center'
 });
 
-const footerControls = style({
+const footer = style({
   display: 'flex',
   gap: vars.spacing.md,
   alignItems: 'center',
   justifyContent: 'center',
-  marginTop: vars.spacing.xl,
   width: '100%'
 });
 
@@ -166,7 +166,7 @@ const button = style({
   border: 'none',
   borderRadius: vars.borderRadius.full,
   cursor: 'pointer',
-  fontWeight: 'bold',
+  fontWeight: 600,
   fontSize: '1rem',
   transition: 'all 0.2s',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -193,23 +193,30 @@ const muteButton = style({
   width: '40px',
   height: '40px',
   padding: 0,
-  fontSize: '1.2rem'
+  fontSize: '1.25rem'
 });
 
 const info = style({
-  fontSize: '1.2rem',
-  fontWeight: 'bold',
+  fontSize: '1.25rem',
+  fontWeight: 600,
   color: vars.colors.black,
   backgroundColor: vars.colors.rose,
   padding: `${vars.spacing.xs} ${vars.spacing.md}`,
   borderRadius: vars.borderRadius.full,
-  border: `2px solid ${vars.colors.red}`,
-  marginBottom: vars.spacing.sm
+  border: `2px solid ${vars.colors.red}`
+});
+
+const header = style({
+  display: 'flex',
+  gap: vars.spacing.md,
+  alignItems: 'center',
+  flexDirection: 'column',
+  justifyContent: 'space-between'
 });
 
 const title = style({
   margin: 0,
-  fontWeight: 800,
+  fontWeight: 700,
   textAlign: 'center',
   color: vars.colors.white,
   fontSize: 'clamp(3rem, 10vw, 4rem)',
@@ -249,11 +256,11 @@ const modalTitle = style({
   fontSize: '2rem',
   color: vars.colors.red,
   margin: 0,
-  fontWeight: 800
+  fontWeight: 700
 });
 
 const modalText = style({
-  fontSize: '1.2rem',
+  fontSize: '1.25rem',
   color: vars.colors.black,
   margin: 0
 });
@@ -271,10 +278,11 @@ export {
   red,
   skeletonCard,
   controls,
-  footerControls,
+  footer,
   button,
   muteButton,
   info,
+  header,
   title,
   modalOverlay,
   modal,

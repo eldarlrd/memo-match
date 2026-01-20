@@ -8,6 +8,7 @@ import useGame from '@/hooks/useGame.ts';
 import GameOver from '@/modals/GameOver.tsx';
 import { container } from '@/styles/app.css.ts';
 import '@fontsource-variable/dynapuff/index.css';
+import 'modern-normalize/modern-normalize.css';
 
 const App = (): ReactElement => {
   const {
@@ -41,7 +42,6 @@ const App = (): ReactElement => {
 
       <GameOver
         gameState={gameState}
-        triesLeft={triesLeft}
         onRestart={() => {
           initializeGame(gridSize);
         }}

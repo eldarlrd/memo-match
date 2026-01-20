@@ -1,6 +1,5 @@
 import { globalStyle, keyframes } from '@vanilla-extract/css';
 
-import 'modern-normalize/modern-normalize.css';
 import { vars } from '@/styles/theme.css.ts';
 
 const glowAnimation = keyframes({
@@ -10,27 +9,16 @@ const glowAnimation = keyframes({
 });
 
 globalStyle('body', {
-  fontFamily: "'DynaPuff Variable', sans-serif",
   backgroundImage: `radial-gradient(ellipse at 50% 0%, ${vars.colors.ginger} 0%, transparent 75%)`,
   animation: `${glowAnimation} 10s ease-in-out infinite`,
   backgroundColor: vars.colors.orange,
-  backgroundAttachment: 'fixed',
-  backgroundSize: '150% 100%',
-  color: vars.colors.white,
-  minHeight: '100dvh',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  display: 'flex',
-  padding: 0,
-  margin: 0
+  backgroundSize: '150% 100%'
 });
 
 globalStyle('#root', {
-  width: '90%',
+  fontFamily: "'DynaPuff Variable', sans-serif",
+  minHeight: '100dvh',
   display: 'flex',
   userSelect: 'none',
-  alignItems: 'center',
-  flexDirection: 'column',
-  padding: vars.spacing.md
+  padding: `${vars.spacing.xxl} ${vars.spacing.md}`
 });

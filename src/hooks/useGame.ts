@@ -9,6 +9,7 @@ import {
 import type { Card, GridSize } from '@/config/types.ts';
 import useSound from '@/hooks/useSound.ts';
 
+// TODO: rm auto-close & close actions
 const shuffle = <T>(array: T[]): T[] => {
   const result = [...array];
 

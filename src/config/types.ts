@@ -4,7 +4,6 @@ type GridSize = (typeof GRID_SIZES)[number];
 
 interface GameOverProps {
   gameState: 'won' | 'lost' | 'playing';
-  triesLeft: number;
   onRestart: () => void;
 }
 

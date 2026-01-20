@@ -8,17 +8,17 @@ const Footer = ({
   onReset,
   onToggleMute
 }: FooterProps): ReactElement => (
-  <div className={styles.footerControls}>
+  <footer className={styles.footer}>
     <button className={styles.button} onClick={onReset}>
       Reset Game
     </button>
+
     <button
       className={`${styles.button} ${styles.muteButton}`}
-      onClick={onToggleMute}
-      aria-label={isMuted ? 'Unmute' : 'Mute'}>
+      onClick={onToggleMute}>
       {isMuted ? '🔇' : '🔊'}
     </button>
-  </div>
+  </footer>
 );
 
 export default Footer;

@@ -11,14 +11,14 @@ const Board = ({
   onCardClick
 }: BoardProps): ReactElement =>
   isLoading ?
-    <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
+    <main className={`${styles.board} ${styles.boardSize[gridSize]}`}>
       {Array.from({ length: gridSize * gridSize }).map((_, index) => (
         <div key={`skeleton-${index.toString()}`} className={styles.card}>
           <div className={styles.skeletonCard} />
         </div>
       ))}
-    </div>
-  : <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
+    </main>
+  : <main className={`${styles.board} ${styles.boardSize[gridSize]}`}>
       {cards.map((card, index) => (
         <Card
           key={card.id}
@@ -28,6 +28,6 @@ const Board = ({
           }}
         />
       ))}
-    </div>;
+    </main>;
 
 export default Board;

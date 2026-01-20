@@ -19,10 +19,10 @@ const Header = ({
   else if (ratio <= 0.5) emoji = '❤️‍🩹';
 
   return (
-    <>
+    <header className={styles.header}>
       <h1 className={styles.title}>Memo Match</h1>
 
-      <header className={styles.controls}>
+      <div className={styles.controls}>
         {GRID_SIZES.map(size => (
           <button
             key={size}
@@ -34,12 +34,12 @@ const Header = ({
             {GRID_LABELS[size]}
           </button>
         ))}
-      </header>
+      </div>
 
       <div className={styles.info}>
         {emoji} {triesLeft}
       </div>
-    </>
+    </header>
   );
 };
 
