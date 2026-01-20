@@ -22,7 +22,7 @@ const Header = ({
     <>
       <h1 className={styles.title}>Memo Match</h1>
 
-      <div className={styles.controls}>
+      <header className={styles.controls}>
         {GRID_SIZES.map(size => (
           <button
             key={size}
@@ -34,7 +34,7 @@ const Header = ({
             {GRID_LABELS[size]}
           </button>
         ))}
-      </div>
+      </header>
 
       <div className={styles.info}>
         {emoji} {triesLeft}

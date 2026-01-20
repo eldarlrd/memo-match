@@ -9,32 +9,25 @@ const Board = ({
   gridSize,
   isLoading,
   onCardClick
-}: BoardProps): ReactElement => {
-  if (isLoading)
-    return (
-      <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
-        {Array.from({ length: gridSize * gridSize }).map((_, index) => (
-          <div key={`skeleton-${index.toString()}`} className={styles.card}>
-            <div className={styles.skeletonCard} />
-          </div>
-        ))}
-      </div>
-    );
-
-  return (
+}: BoardProps): ReactElement =>
+  isLoading ?
     <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
+      {Array.from({ length: gridSize * gridSize }).map((_, index) => (
+        <div key={`skeleton-${index.toString()}`} className={styles.card}>
+          <div className={styles.skeletonCard} />
+        </div>
+      ))}
+    </div>
+  : <div className={`${styles.board} ${styles.boardSize[gridSize]}`}>
       {cards.map((card, index) => (
         <Card
           key={card.id}
           card={card}
-          index={index}
           onClick={() => {
             onCardClick(index);
           }}
         />
       ))}
-    </div>
-  );
-};
+    </div>;
 
 export default Board;

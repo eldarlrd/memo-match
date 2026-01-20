@@ -19,7 +19,6 @@ interface Card {
 interface CardProps {
   card: Card;
   onClick: () => void;
-  index: number;
 }
 
 interface BoardProps {

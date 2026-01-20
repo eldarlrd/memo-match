@@ -3,32 +3,21 @@ import type { ReactElement } from 'react';
 import type { CardProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
 
-const Card = ({ card, onClick, index }: CardProps): ReactElement => {
-  const label =
-    card.isMatched ? `Card ${(index + 1).toString()}: ${card.value} (Matched)`
-    : card.isFlipped ? `Card ${(index + 1).toString()}: ${card.value}`
-    : `Card ${(index + 1).toString()}: Back`;
-
-  return (
-    <button
-      className={styles.card}
-      onClick={onClick}
-      aria-label={label}
-      disabled={card.isMatched}>
+const Card = ({ card, onClick }: CardProps): ReactElement => (
+  <button disabled={card.isMatched} className={styles.card} onClick={onClick}>
+    <div
+      className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
       <div
-        className={`${styles.cardInner} ${card.isFlipped || card.isMatched ? styles.cardFlipped : ''}`}>
-        <div
-          className={`${styles.white} ${card.isMatched ? styles.cardMatched : ''}`}>
-          <img
-            src={card.imageUrl}
-            alt={card.value}
-            className={styles.cardImage}
-          />
-        </div>
-        <div className={styles.red} />
+        className={`${styles.white} ${card.isMatched ? styles.cardMatched : ''}`}>
+        <img
+          src={card.imageUrl}
+          alt={card.value}
+          className={styles.cardImage}
+        />
       </div>
-    </button>
-  );
-};
+      <div className={styles.red} />
+    </div>
+  </button>
+);
 
 export default Card;
