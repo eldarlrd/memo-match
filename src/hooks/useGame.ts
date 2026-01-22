@@ -1,15 +1,9 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 
-import {
-  TRIES_BY_SIZE,
-  CARDS,
-  getCardImageUrl,
-  AUTO_CLOSE_TIMEOUT
-} from '@/config/rules.ts';
+import { TRIES_BY_SIZE, CARDS, getCardImageUrl } from '@/config/rules.ts';
 import type { Card, GridSize } from '@/config/types.ts';
 import useSound from '@/hooks/useSound.ts';
 
-// TODO: rm auto-close & close actions
 const shuffle = <T>(array: T[]): T[] => {
   const result = [...array];
 
@@ -59,7 +53,6 @@ const useGame = (): {
   const hasPlayedEndSound = useRef(false);
   const sessionRef = useRef(0);
   const isResettingRef = useRef(false);
-  const autoCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const preloadImages = useCallback((newCards: Card[]) => {
     const imageUrls = Array.from(new Set(newCards.map(c => c.imageUrl)));
@@ -97,19 +90,8 @@ const useGame = (): {
     }
   }, [gameState, playSound]);
 
-  useEffect(() => {
-    return (): void => {
-      if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
-    };
-  }, []);
-
   const initializeGame = useCallback(
     (size: GridSize): void => {
-      if (autoCloseTimerRef.current) {
-        clearTimeout(autoCloseTimerRef.current);
-        autoCloseTimerRef.current = null;
-      }
-
       sessionRef.current++;
       const currentSession = sessionRef.current;
 
@@ -150,27 +132,10 @@ const useGame = (): {
       isResettingRef.current ||
       isLoading ||
       flippedIndices.length === 2 ||
-      (flippedIndices.length === 0 && cards[index].isFlipped) ||
+      cards[index].isFlipped ||
       cards[index].isMatched
     )
       return;
-
-    if (autoCloseTimerRef.current) {
-      clearTimeout(autoCloseTimerRef.current);
-      autoCloseTimerRef.current = null;
-    }
-
-    if (flippedIndices.length === 1 && flippedIndices[0] === index) {
-      playSound('reveal');
-      setCards(prev =>
-        prev.map((card, i) =>
-          i === index ? { ...card, isFlipped: false } : card
-        )
-      );
-      setFlippedIndices([]);
-
-      return;
-    }
 
     playSound('reveal');
     setCards(prev =>
@@ -181,28 +146,11 @@ const useGame = (): {
 
     setFlippedIndices(newFlippedIndices);
 
-    if (newFlippedIndices.length === 1) {
-      const currentSession = sessionRef.current;
-
-      autoCloseTimerRef.current = setTimeout(() => {
-        if (sessionRef.current !== currentSession) return;
-
-        playSound('reveal');
-        setCards(prev =>
-          prev.map((card, i) =>
-            i === index ? { ...card, isFlipped: false } : card
-          )
-        );
-        setFlippedIndices([]);
-        autoCloseTimerRef.current = null;
-      }, AUTO_CLOSE_TIMEOUT);
-    }
-
     if (newFlippedIndices.length === 2) {
       const currentSession = sessionRef.current;
       const [firstIndex, secondIndex] = newFlippedIndices;
 
-      if (cards[firstIndex].value === cards[secondIndex].value)
+      if (cards[firstIndex].value === cards[secondIndex].value) {
         setTimeout(() => {
           if (sessionRef.current !== currentSession) return;
           setCards(prev =>
@@ -214,7 +162,7 @@ const useGame = (): {
           );
           setFlippedIndices([]);
         }, 500);
-      else {
+      } else {
         setTriesLeft(prev => prev - 1);
         setTimeout(() => {
           if (sessionRef.current !== currentSession) return;

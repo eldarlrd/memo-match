@@ -1,17 +1,17 @@
 import { useCallback, useRef } from 'react';
 
-import flip from '#/sfx/flip.opus';
-import loss from '#/sfx/loss.opus';
-import shuffle from '#/sfx/shuffle.opus';
-import win from '#/sfx/win.opus';
+import lost from '#/sfx/lost.opus';
+import reset from '#/sfx/reset.opus';
+import reveal from '#/sfx/reveal.opus';
+import won from '#/sfx/won.opus';
 
 type SoundType = 'reveal' | 'reset' | 'won' | 'lost';
 
 const SFX_MAP: Record<SoundType, string> = {
-  reveal: flip,
-  reset: shuffle,
-  won: win,
-  lost: loss
+  reveal,
+  reset,
+  won,
+  lost
 };
 
 const useSound = (
