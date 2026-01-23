@@ -4,6 +4,7 @@ import lost from '#/sfx/lost.opus';
 import reset from '#/sfx/reset.opus';
 import reveal from '#/sfx/reveal.opus';
 import won from '#/sfx/won.opus';
+import { ERROR_SOUND } from '@/config/errors.ts';
 
 type SoundType = 'reveal' | 'reset' | 'won' | 'lost';
 
@@ -51,7 +52,7 @@ const useSound = (
             return buffer;
           })
           .catch((error: unknown) => {
-            console.error(`Failed to load sound: ${type}`, error);
+            if (error instanceof Error) console.error(ERROR_SOUND, error);
           });
       }
     },

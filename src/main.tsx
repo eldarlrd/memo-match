@@ -22,6 +22,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from '@/App.tsx';
+import { ERROR_SW } from '@/config/errors.ts';
 
 const root = document.getElementById('root');
 
@@ -40,7 +41,7 @@ const registerSW = (): void => {
           scope: '/memo-match/'
         })
         .catch((error: unknown) => {
-          if (error instanceof Error) console.error(error);
+          if (error instanceof Error) console.error(ERROR_SW, error);
         });
     });
 };

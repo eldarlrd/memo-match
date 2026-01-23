@@ -1,7 +1,7 @@
 import type { GridSize } from '@/config/types.ts';
 
+// Grid Rules
 const GRID_SIZES = [4, 6] as const;
-
 const GRID_LABELS: Record<GridSize, string> = {
   4: 'Normal',
   6: 'Hard'
@@ -11,9 +11,9 @@ const TRIES_BY_SIZE: Record<GridSize, number> = Object.fromEntries(
   GRID_SIZES.map(size => [size, Math.floor(((size * size) / 2) * 3.5 - 3)])
 ) as Record<GridSize, number>;
 
+// Card Rules
 const SUITS = ['♠', '♥', '♦', '♣'];
 const RANKS = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
 const CARDS = SUITS.flatMap(suit => RANKS.map(rank => `${rank}${suit}`));
 
 const getCardImageUrl = (value: string): string => {

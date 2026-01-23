@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { ImTongue2 } from 'react-icons/im';
 import { PiBrainFill } from 'react-icons/pi';
 
+import logo from '#/images/logo.png';
 import { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE } from '@/config/rules.ts';
 import type { ControlsProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
@@ -22,7 +23,10 @@ const Header = ({
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>Memo Match</h1>
+      <h1 className={styles.title}>
+        <img src={logo} alt='Logo' />
+        Memo Match
+      </h1>
 
       <div className={styles.controls}>
         {GRID_SIZES.map(size => (
