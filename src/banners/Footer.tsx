@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react';
+import { ImVolumeMedium, ImVolumeMute2 } from 'react-icons/im';
+import { PiSwapBold } from 'react-icons/pi';
 
 import type { FooterProps } from '@/config/types.ts';
 import * as styles from '@/styles/app.css.ts';
@@ -10,13 +12,15 @@ const Footer = ({
 }: FooterProps): ReactElement => (
   <footer className={styles.footer}>
     <button className={styles.button} onClick={onReset}>
-      Reset Game
+      <PiSwapBold /> Shuffle
     </button>
 
     <button
       className={`${styles.button} ${styles.muteButton}`}
       onClick={onToggleMute}>
-      {isMuted ? '🔇' : '🔊'}
+      {isMuted ?
+        <ImVolumeMute2 />
+      : <ImVolumeMedium />}
     </button>
   </footer>
 );

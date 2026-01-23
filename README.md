@@ -7,6 +7,7 @@
 > - **[React](https://react.dev)**
 > - **[vanilla-extract](https://vanilla-extract.style)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
+> - **[React Icons](https://react-icons.github.io/react-icons)**
 > - **[Vite PWA](https://vite-pwa-org.netlify.app)**
 > - **[Vite](https://vite.dev)**
 >

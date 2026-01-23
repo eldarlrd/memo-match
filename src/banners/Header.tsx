@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react';
+import { ImTongue2 } from 'react-icons/im';
+import { PiBrainFill } from 'react-icons/pi';
 
 import { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE } from '@/config/rules.ts';
 import type { ControlsProps } from '@/config/types.ts';
@@ -31,6 +33,9 @@ const Header = ({
               onSizeChange(size);
             }}
             disabled={currentGridSize === size && gameState === 'playing'}>
+            {size === 4 ?
+              <ImTongue2 />
+            : <PiBrainFill />}
             {GRID_LABELS[size]}
           </button>
         ))}

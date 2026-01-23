@@ -1,7 +1,7 @@
 {
   "name": "memo-match",
   "private": true,
-  "version": "0.7.2",
+  "version": "0.7.3",
   "type": "module",
   "keywords": [
     "concentration",
@@ -38,17 +38,18 @@
     "@vanilla-extract/css": "^1.18.0",
     "modern-normalize": "^3.0.1",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
-    "@types/node": "^25.0.9",
+    "@types/node": "^25.0.10",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@vanilla-extract/vite-plugin": "^5.1.4",
     "@vitejs/plugin-react": "^5.1.2",
-    "@vitest/coverage-v8": "^4.0.17",
+    "@vitest/coverage-v8": "^4.0.18",
     "@vitest/eslint-plugin": "^1.6.6",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.2",
@@ -63,15 +64,15 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
     "gh-pages": "^6.3.0",
-    "globals": "^17.0.0",
+    "globals": "^17.1.0",
     "jsdom": "^27.4.0",
     "knip": "^5.82.1",
-    "prettier": "^3.8.0",
+    "prettier": "^3.8.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.1",
     "vite": "npm:rolldown-vite@7.3.1",
     "vite-plugin-pwa": "^1.2.0",
-    "vitest": "^4.0.17",
+    "vitest": "^4.0.18",
     "workbox-core": "^7.4.0",
     "workbox-precaching": "^7.4.0"
   }
