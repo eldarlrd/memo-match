@@ -9,16 +9,16 @@ const glowAnimation = keyframes({
 });
 
 globalStyle('body', {
-  backgroundImage: `radial-gradient(ellipse at 50% 0%, ${vars.colors.ginger} 0%, transparent 75%)`,
-  animation: `${glowAnimation} 10s ease-in-out infinite`,
+  backgroundSize: '150% 100%',
   backgroundColor: vars.colors.orange,
-  backgroundSize: '150% 100%'
+  animation: `${glowAnimation} 10s ease-in-out infinite`,
+  backgroundImage: `radial-gradient(ellipse at 50% 0%, ${vars.colors.ginger} 0%, transparent 75%)`
 });
 
 globalStyle('#root', {
-  fontFamily: "'DynaPuff Variable', sans-serif",
-  minHeight: '100dvh',
   display: 'flex',
   userSelect: 'none',
+  minHeight: '100dvh',
+  fontFamily: "'DynaPuff Variable', sans-serif",
   padding: `${vars.spacing.xxl} ${vars.spacing.md}`
 });

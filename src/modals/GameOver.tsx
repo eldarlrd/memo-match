@@ -1,7 +1,8 @@
 import type { ReactElement } from 'react';
 
 import type { GameOverProps } from '@/config/types.ts';
-import * as styles from '@/styles/app.css.ts';
+import * as modalStyles from '@/styles/modal.css.ts';
+import * as uiStyles from '@/styles/ui.css.ts';
 
 const GameOver = ({
   gameState,
@@ -10,19 +11,19 @@ const GameOver = ({
   if (gameState !== 'won' && gameState !== 'lost') return null;
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
-        <h2 id='modal-title' className={styles.modalTitle}>
+    <div className={modalStyles.modalOverlay}>
+      <div className={modalStyles.modal}>
+        <h2 id='modal-title' className={modalStyles.modalTitle}>
           {gameState === 'won' ? '🎉 You Won!' : '💀 Game Over!'}
         </h2>
 
-        <p className={styles.modalText}>
+        <p className={modalStyles.modalText}>
           {gameState === 'won' ?
             `Well done!`
           : 'Better luck next time! Try again to beat the game.'}
         </p>
 
-        <button className={styles.button} onClick={onRestart}>
+        <button className={uiStyles.button} onClick={onRestart}>
           Play Again
         </button>
       </div>

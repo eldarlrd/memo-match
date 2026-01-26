@@ -3,7 +3,7 @@ import { ImVolumeMedium, ImVolumeMute2 } from 'react-icons/im';
 import { PiSwapBold } from 'react-icons/pi';
 
 import type { FooterProps } from '@/config/types.ts';
-import * as styles from '@/styles/app.css.ts';
+import * as styles from '@/styles/ui.css.ts';
 
 const Footer = ({
   isMuted,

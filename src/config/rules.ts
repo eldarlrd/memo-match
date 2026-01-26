@@ -8,7 +8,7 @@ const GRID_LABELS: Record<GridSize, string> = {
 };
 
 const TRIES_BY_SIZE: Record<GridSize, number> = Object.fromEntries(
-  GRID_SIZES.map(size => [size, Math.floor(((size * size) / 2) * 3.5 - 3)])
+  GRID_SIZES.map(size => [size, ~~(((size * size) / 2) * 3.5 - 3)])
 ) as Record<GridSize, number>;
 
 // Card Rules

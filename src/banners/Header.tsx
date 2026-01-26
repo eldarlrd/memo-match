@@ -2,10 +2,11 @@ import type { ReactElement } from 'react';
 import { ImTongue2 } from 'react-icons/im';
 import { PiBrainFill } from 'react-icons/pi';
 
-import logo from '#/images/logo.png';
+import logo from '#/images/logo.webp';
 import { GRID_SIZES, GRID_LABELS, TRIES_BY_SIZE } from '@/config/rules.ts';
 import type { ControlsProps } from '@/config/types.ts';
-import * as styles from '@/styles/app.css.ts';
+import * as headerStyles from '@/styles/header.css.ts';
+import * as uiStyles from '@/styles/ui.css.ts';
 
 const Header = ({
   currentGridSize,
@@ -22,17 +23,17 @@ const Header = ({
   else if (ratio <= 0.5) emoji = '❤️‍🩹';
 
   return (
-    <header className={styles.header}>
-      <h1 className={styles.title}>
-        <img src={logo} alt='Logo' />
+    <header className={headerStyles.header}>
+      <h1 className={headerStyles.title}>
+        <img className={headerStyles.logo} src={logo} alt='Logo' />
         Memo Match
       </h1>
 
-      <div className={styles.controls}>
+      <div className={uiStyles.controls}>
         {GRID_SIZES.map(size => (
           <button
             key={size}
-            className={styles.button}
+            className={uiStyles.button}
             onClick={() => {
               onSizeChange(size);
             }}
@@ -45,7 +46,7 @@ const Header = ({
         ))}
       </div>
 
-      <div className={styles.info}>
+      <div className={uiStyles.info}>
         {emoji} {triesLeft}
       </div>
     </header>

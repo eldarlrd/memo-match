@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 
 import Card from '@/components/Card.tsx';
 import type { BoardProps } from '@/config/types.ts';
-import * as styles from '@/styles/app.css.ts';
+import * as styles from '@/styles/game.css.ts';
 
 const Board = ({
   cards,

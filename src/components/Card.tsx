@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
 import type { CardProps } from '@/config/types.ts';
-import * as styles from '@/styles/app.css.ts';
+import * as styles from '@/styles/game.css.ts';
 
 const Card = ({ card, onClick }: CardProps): ReactElement => (
   <button disabled={card.isMatched} className={styles.card} onClick={onClick}>

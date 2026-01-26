@@ -1,6 +1,11 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
-export const vars = createGlobalTheme(':root', {
+const BREAKPOINTS = {
+  board4: '31.25rem',
+  board6: '43.75rem'
+};
+
+const vars = createGlobalTheme(':root', {
   colors: {
     black: '#171717', // neutral-900
     white: '#fafafa', // neutral-50
@@ -14,7 +19,9 @@ export const vars = createGlobalTheme(':root', {
     orange: '#ea580c', // orange-600
     brownOpaque: '#43140766' // orange-950/40%
   },
+
   spacing: {
+    xxs: '.125rem',
     xs: '.25rem',
     sm: '.5rem',
     md: '.75rem',
@@ -22,6 +29,7 @@ export const vars = createGlobalTheme(':root', {
     xl: '1.5rem',
     xxl: '2rem'
   },
+
   borderRadius: {
     xs: '.125rem',
     sm: '.25rem',
@@ -31,16 +39,44 @@ export const vars = createGlobalTheme(':root', {
     xxl: '1rem',
     full: 'calc(infinity * 1px)'
   },
+
   screen: {
     sm: '640px',
     md: '768px',
     lg: '1024px',
     xl: '1280px'
   },
+
   responsive: {
     sm: '(min-width: 640px)',
     md: '(min-width: 768px)',
     lg: '(min-width: 1024px)',
     xl: '(min-width: 1280px)'
+  },
+
+  width: {
+    modal: '25rem',
+    muteButton: '2.5rem',
+    board4Mobile: '20rem',
+    board6Mobile: '28.125rem',
+    board4: BREAKPOINTS.board4,
+    board6: BREAKPOINTS.board6,
+    header: 'clamp(3rem, 10vw, 4rem)'
+  },
+
+  aspectRatio: {
+    logo: '1',
+    card: '3 / 4'
+  },
+
+  transition: {
+    function: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    duration: {
+      sm: '150ms',
+      md: '300ms',
+      lg: '1s'
+    }
   }
 });
+
+export { BREAKPOINTS, vars };
