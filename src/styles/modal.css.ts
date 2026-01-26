@@ -13,19 +13,19 @@ const modalOverlay = style({
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: COLORS.brownOpaque,
-  backdropFilter: `blur(${vars.spacing.xs})`
+  backdropFilter: `blur(${vars.sizes.xs})`
 });
 
 const modal = style({
   width: '90%',
   display: 'flex',
   textAlign: 'center',
-  gap: vars.spacing.md,
+  gap: vars.sizes.md,
   flexDirection: 'column',
-  padding: vars.spacing.xl,
+  padding: vars.sizes.xl,
   maxWidth: vars.width.modal,
   backgroundColor: COLORS.white,
-  borderRadius: vars.borderRadius.lg,
+  borderRadius: vars.sizes.sm,
   border: `.25rem solid ${COLORS.red}`,
   boxShadow:
     '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'

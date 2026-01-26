@@ -6,7 +6,7 @@ export const container = style({
   width: '100%',
   display: 'flex',
   alignItems: 'center',
-  gap: vars.spacing.xl,
+  gap: vars.sizes.xl,
   flexDirection: 'column',
   maxWidth: vars.responsive.md,
   justifyContent: 'space-between'

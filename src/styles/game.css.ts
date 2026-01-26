@@ -16,7 +16,7 @@ const cardFaceBase = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: vars.borderRadius.md,
+  borderRadius: vars.sizes.ss,
   boxShadow:
     '0 4px 6px -1px rgb(220 38 38 / 0.1), 0 2px 4px -2px rgb(220 38 38 / 0.1)',
   border: `2px solid ${COLORS.rose}`,
@@ -26,13 +26,13 @@ const cardFaceBase = style({
 const board = style({
   width: '100%',
   display: 'grid',
-  gap: vars.spacing.md,
-  maxWidth: vars.spacing.lg,
+  gap: vars.sizes.md,
+  maxWidth: vars.sizes.lg,
   containerType: 'inline-size',
 
   '@media': {
     '(max-width: 600px)': {
-      gap: vars.spacing.sm
+      gap: vars.sizes.sm
     }
   }
 });
@@ -79,13 +79,13 @@ const card = style({
   ':focus-visible': {
     outline: `3px solid white`,
     outlineOffset: '4px',
-    borderRadius: vars.borderRadius.md
+    borderRadius: vars.sizes.ss
   }
 });
 
 const skeletonCard = style({
   backgroundColor: 'rgba(255, 255, 255, 0.2)',
-  borderRadius: vars.borderRadius.md,
+  borderRadius: vars.sizes.ss,
   width: '100%',
   height: '100%',
   animation: `${pulse} ${vars.transition.duration.lg} infinite ease-in-out`
@@ -97,7 +97,7 @@ const cardInner = style({
   height: '100%',
   transition: `transform ${vars.transition.duration.md} ${vars.transition.function}`,
   transformStyle: 'preserve-3d',
-  borderRadius: vars.borderRadius.md
+  borderRadius: vars.sizes.ss
 });
 
 const cardFlipped = style({
@@ -119,7 +119,7 @@ const white = style([
   cardFaceBase,
   {
     boxSizing: 'border-box',
-    padding: vars.spacing.xxs,
+    padding: vars.sizes['2xs'],
     transform: 'rotateY(180deg)',
     backgroundColor: COLORS.white
   }

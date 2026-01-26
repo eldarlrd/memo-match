@@ -20,5 +20,5 @@ globalStyle('#root', {
   userSelect: 'none',
   minHeight: '100dvh',
   fontFamily: "'DynaPuff Variable', sans-serif",
-  padding: `${vars.spacing.xxl} ${vars.spacing.md}`
+  padding: `${vars.sizes['2xl']} ${vars.sizes.md}`
 });

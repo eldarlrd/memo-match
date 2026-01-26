@@ -4,7 +4,7 @@ import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const controls = style({
   display: 'flex',
-  gap: vars.spacing.md,
+  gap: vars.sizes.md,
   alignItems: 'center',
   flexWrap: 'wrap',
   justifyContent: 'center'
@@ -12,25 +12,25 @@ const controls = style({
 
 const footer = style({
   display: 'flex',
-  gap: vars.spacing.md,
+  gap: vars.sizes.md,
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%'
 });
 
 const button = style({
-  padding: `${vars.spacing.sm} ${vars.spacing.lg}`,
+  padding: `${vars.sizes.sm} ${vars.sizes.lg}`,
   backgroundColor: COLORS.red,
   color: 'white',
   border: 'none',
-  borderRadius: vars.borderRadius.full,
+  borderRadius: vars.sizes.full,
   cursor: 'pointer',
   fontWeight: 600,
   fontSize: '1rem',
   transition: `all ${vars.transition.duration.sm} ${vars.transition.function}`,
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   display: 'flex',
-  gap: vars.spacing.xs,
+  gap: vars.sizes.xs,
   alignItems: 'center',
   justifyContent: 'center',
 
@@ -64,8 +64,8 @@ const info = style({
   fontWeight: 600,
   color: COLORS.black,
   backgroundColor: COLORS.rose,
-  padding: `${vars.spacing.xs} ${vars.spacing.md}`,
-  borderRadius: vars.borderRadius.full,
+  padding: `${vars.sizes.xs} ${vars.sizes.md}`,
+  borderRadius: vars.sizes.full,
   border: `2px solid ${COLORS.red}`
 });
 

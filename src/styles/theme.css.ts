@@ -34,23 +34,15 @@ const vars = createGlobalTheme(':root', {
     xl: '1280px'
   },
 
-  spacing: {
-    xxs: '.125rem',
+  sizes: {
+    '2xs': '.125rem',
     xs: '.25rem',
+    ss: '.375rem',
     sm: '.5rem',
     md: '.75rem',
     lg: '1rem',
     xl: '1.5rem',
-    xxl: '2rem'
-  },
-
-  borderRadius: {
-    xs: '.125rem',
-    sm: '.25rem',
-    md: '.375rem',
-    lg: '.5rem',
-    xl: '.75rem',
-    xxl: '1rem',
+    '2xl': '2rem',
     full: 'calc(infinity * 1px)'
   },
 

@@ -4,7 +4,7 @@ import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const header = style({
   display: 'flex',
-  gap: vars.spacing.md,
+  gap: vars.sizes.md,
   alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'space-between'
@@ -16,13 +16,13 @@ const title = style({
   textAlign: 'center',
   color: COLORS.white,
   fontSize: vars.width.header,
-  textShadow: `${vars.spacing.xs} ${vars.spacing.xs} ${COLORS.red}`
+  textShadow: `${vars.sizes.xs} ${vars.sizes.xs} ${COLORS.red}`
 });
 
 const logo = style({
   verticalAlign: 'middle',
   width: vars.width.header,
-  marginInlineEnd: vars.spacing.sm,
+  marginInlineEnd: vars.sizes.sm,
   aspectRatio: vars.aspectRatio.logo
 });
 
