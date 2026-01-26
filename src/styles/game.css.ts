@@ -1,6 +1,6 @@
 import { style, keyframes, styleVariants } from '@vanilla-extract/css';
 
-import { vars, BREAKPOINTS } from '@/styles/theme.css.ts';
+import { vars, BREAKPOINTS, COLORS } from '@/styles/theme.css.ts';
 
 const pulse = keyframes({
   '0%': { opacity: 0.4 },
@@ -19,7 +19,7 @@ const cardFaceBase = style({
   borderRadius: vars.borderRadius.md,
   boxShadow:
     '0 4px 6px -1px rgb(220 38 38 / 0.1), 0 2px 4px -2px rgb(220 38 38 / 0.1)',
-  border: `2px solid ${vars.colors.rose}`,
+  border: `2px solid ${COLORS.rose}`,
   transition: `background-color ${vars.transition.duration.md} ${vars.transition.function}, border-color ${vars.transition.duration.md} ${vars.transition.function}`
 });
 
@@ -105,8 +105,8 @@ const cardFlipped = style({
 });
 
 const cardMatched = style({
-  backgroundColor: `${vars.colors.blue} !important`,
-  borderColor: `${vars.colors.sky} !important`
+  borderColor: `${COLORS.sky} !important`,
+  backgroundColor: `${COLORS.blue} !important`
 });
 
 const cardImage = style({
@@ -118,24 +118,24 @@ const cardImage = style({
 const white = style([
   cardFaceBase,
   {
-    backgroundColor: vars.colors.white,
-    transform: 'rotateY(180deg)',
+    boxSizing: 'border-box',
     padding: vars.spacing.xxs,
-    boxSizing: 'border-box'
+    transform: 'rotateY(180deg)',
+    backgroundColor: COLORS.white
   }
 ]);
 
 const red = style([
   cardFaceBase,
   {
-    backgroundColor: vars.colors.red,
-    color: 'white',
+    color: COLORS.white,
+    boxSizing: 'border-box',
+    border: `.25rem solid ${COLORS.white}`,
+    backgroundColor: COLORS.red,
     backgroundImage: `
       repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px),
       repeating-linear-gradient(-45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px)
-    `,
-    border: '4px solid white',
-    boxSizing: 'border-box'
+    `
   }
 ]);
 

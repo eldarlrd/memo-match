@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/theme.css.ts';
+import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const header = style({
   display: 'flex',
@@ -14,9 +14,9 @@ const title = style({
   margin: 0,
   fontWeight: 700,
   textAlign: 'center',
-  color: vars.colors.white,
+  color: COLORS.white,
   fontSize: vars.width.header,
-  textShadow: `3px 3px 0px ${vars.colors.red}`
+  textShadow: `${vars.spacing.xs} ${vars.spacing.xs} ${COLORS.red}`
 });
 
 const logo = style({

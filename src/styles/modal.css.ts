@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/theme.css.ts';
+import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const modalOverlay = style({
   top: 0,
@@ -8,40 +8,40 @@ const modalOverlay = style({
   right: 0,
   bottom: 0,
   zIndex: 1,
-  position: 'fixed',
   display: 'flex',
+  position: 'fixed',
   alignItems: 'center',
   justifyContent: 'center',
-  backdropFilter: 'blur(4px)',
-  backgroundColor: vars.colors.brownOpaque
+  backgroundColor: COLORS.brownOpaque,
+  backdropFilter: `blur(${vars.spacing.xs})`
 });
 
 const modal = style({
-  backgroundColor: vars.colors.white,
-  padding: vars.spacing.xl,
-  borderRadius: vars.borderRadius.lg,
-  boxShadow:
-    '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
-  maxWidth: vars.width.modal,
   width: '90%',
-  textAlign: 'center',
   display: 'flex',
-  flexDirection: 'column',
+  textAlign: 'center',
   gap: vars.spacing.md,
-  border: `4px solid ${vars.colors.red}`
+  flexDirection: 'column',
+  padding: vars.spacing.xl,
+  maxWidth: vars.width.modal,
+  backgroundColor: COLORS.white,
+  borderRadius: vars.borderRadius.lg,
+  border: `.25rem solid ${COLORS.red}`,
+  boxShadow:
+    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
 });
 
 const modalTitle = style({
-  fontSize: '2rem',
-  color: vars.colors.red,
   margin: 0,
-  fontWeight: 700
+  fontWeight: 700,
+  fontSize: '2rem',
+  color: COLORS.red
 });
 
 const modalText = style({
+  margin: 0,
   fontSize: '1.25rem',
-  color: vars.colors.black,
-  margin: 0
+  color: COLORS.black
 });
 
 export { modalOverlay, modal, modalTitle, modalText };

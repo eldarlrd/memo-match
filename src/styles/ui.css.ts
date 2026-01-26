@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/theme.css.ts';
+import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const controls = style({
   display: 'flex',
@@ -20,7 +20,7 @@ const footer = style({
 
 const button = style({
   padding: `${vars.spacing.sm} ${vars.spacing.lg}`,
-  backgroundColor: vars.colors.red,
+  backgroundColor: COLORS.red,
   color: 'white',
   border: 'none',
   borderRadius: vars.borderRadius.full,
@@ -35,7 +35,7 @@ const button = style({
   justifyContent: 'center',
 
   ':hover': {
-    backgroundColor: vars.colors.maroon,
+    backgroundColor: COLORS.maroon,
     transform: 'translateY(-1px)',
     boxShadow: '0 4px 6px rgba(0,0,0,0.15)'
   },
@@ -45,7 +45,7 @@ const button = style({
   },
 
   ':disabled': {
-    backgroundColor: vars.colors.blue,
+    backgroundColor: COLORS.blue,
     cursor: 'not-allowed',
     transform: 'none',
     boxShadow: 'none'
@@ -62,11 +62,11 @@ const muteButton = style({
 const info = style({
   fontSize: '1.25rem',
   fontWeight: 600,
-  color: vars.colors.black,
-  backgroundColor: vars.colors.rose,
+  color: COLORS.black,
+  backgroundColor: COLORS.rose,
   padding: `${vars.spacing.xs} ${vars.spacing.md}`,
   borderRadius: vars.borderRadius.full,
-  border: `2px solid ${vars.colors.red}`
+  border: `2px solid ${COLORS.red}`
 });
 
 export { controls, footer, button, muteButton, info };
