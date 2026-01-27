@@ -8,6 +8,5 @@ export const container = style({
   alignItems: 'center',
   gap: vars.sizes.xl,
   flexDirection: 'column',
-  maxWidth: vars.responsive.md,
   justifyContent: 'space-between'
 });

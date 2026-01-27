@@ -1,10 +1,5 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
-const BREAKPOINTS = {
-  board4: '31rem',
-  board6: '44rem'
-};
-
 const COLORS = {
   black: '#171717', // neutral-900
   white: '#fafafa', // neutral-50
@@ -20,13 +15,6 @@ const COLORS = {
 };
 
 const vars = createGlobalTheme(':root', {
-  responsive: {
-    sm: '(min-width: 640px)',
-    md: '(min-width: 768px)',
-    lg: '(min-width: 1024px)',
-    xl: '(min-width: 1280px)'
-  },
-
   screen: {
     sm: '640px',
     md: '768px',
@@ -49,10 +37,10 @@ const vars = createGlobalTheme(':root', {
   width: {
     modal: '25rem',
     muteButton: '2.5rem',
+    board4: '31rem',
+    board6: '44rem',
     board4Mobile: '20rem',
     board6Mobile: '28rem',
-    board4: BREAKPOINTS.board4,
-    board6: BREAKPOINTS.board6,
     header: 'clamp(3rem, 10vw, 4rem)'
   },
 
@@ -71,4 +59,4 @@ const vars = createGlobalTheme(':root', {
   }
 });
 
-export { BREAKPOINTS, COLORS, vars };
+export { COLORS, vars };

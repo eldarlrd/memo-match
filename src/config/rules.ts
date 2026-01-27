@@ -6,10 +6,10 @@ const GRID_LABELS: Record<GridSize, string> = {
   4: 'Normal',
   6: 'Hard'
 };
-
-const TRIES_BY_SIZE: Record<GridSize, number> = Object.fromEntries(
-  GRID_SIZES.map(size => [size, ~~(((size * size) / 2) * 3.5 - 3)])
-) as Record<GridSize, number>;
+const TRIES_BY_SIZE: Record<GridSize, number> = {
+  4: 15,
+  6: 50
+};
 
 // Card Rules
 const SUITS = ['♠', '♥', '♦', '♣'];

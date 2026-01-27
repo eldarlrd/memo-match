@@ -9,10 +9,10 @@ import * as headerStyles from '@/styles/header.css.ts';
 import * as uiStyles from '@/styles/ui.css.ts';
 
 const Header = ({
-  currentGridSize,
   gameState,
-  onSizeChange,
-  triesLeft
+  triesLeft,
+  currentGridSize,
+  onSizeChange
 }: ControlsProps): ReactElement => {
   const totalTries = TRIES_BY_SIZE[currentGridSize];
   const ratio = +(triesLeft / totalTries).toFixed(1);
@@ -34,10 +34,10 @@ const Header = ({
           <button
             key={size}
             className={uiStyles.button}
+            disabled={currentGridSize === size && gameState === 'playing'}
             onClick={() => {
               onSizeChange(size);
-            }}
-            disabled={currentGridSize === size && gameState === 'playing'}>
+            }}>
             {size === 4 ?
               <ImTongue2 />
             : <PiBrainFill />}

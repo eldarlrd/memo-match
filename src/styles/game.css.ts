@@ -1,6 +1,6 @@
 import { style, keyframes, styleVariants } from '@vanilla-extract/css';
 
-import { vars, BREAKPOINTS, COLORS } from '@/styles/theme.css.ts';
+import { vars, COLORS } from '@/styles/theme.css.ts';
 
 const pulse = keyframes({
   '0%': { opacity: 0.4 },
@@ -31,7 +31,7 @@ const board = style({
   containerType: 'inline-size',
 
   '@media': {
-    '(max-width: 600px)': {
+    '(max-width: 640px)': {
       gap: vars.sizes.sm
     }
   }
@@ -43,7 +43,7 @@ const boardSize = styleVariants({
     gridTemplateColumns: 'repeat(4, 1fr)',
 
     '@media': {
-      [`(max-width: ${BREAKPOINTS.board4})`]: {
+      '(max-width: 20rem)': {
         maxWidth: vars.width.board4Mobile
       }
     }
@@ -54,7 +54,7 @@ const boardSize = styleVariants({
     gridTemplateColumns: 'repeat(6, 1fr)',
 
     '@media': {
-      [`(max-width: ${BREAKPOINTS.board6})`]: {
+      '(max-width: 28rem)': {
         maxWidth: vars.width.board6Mobile
       }
     }

@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 
 import { TRIES_BY_SIZE, CARDS, getCardImageUrl } from '@/config/rules.ts';
-import type { Card, GridSize } from '@/config/types.ts';
+import type { Card, GameState, GridSize } from '@/config/types.ts';
 import useSound from '@/hooks/useSound.ts';
 
 const shuffle = <T>(array: T[]): T[] => {
@@ -36,7 +36,7 @@ const useGame = (): {
   triesLeft: number;
   isMuted: boolean;
   isLoading: boolean;
-  gameState: 'playing' | 'won' | 'lost';
+  gameState: GameState;
   handleCardClick: (index: number) => void;
   handleSizeChange: (size: GridSize) => void;
   initializeGame: (size: GridSize) => void;
@@ -75,7 +75,7 @@ const useGame = (): {
     void preloadImages(cards);
   }, [cards, preloadImages]);
 
-  const gameState = useMemo((): 'playing' | 'won' | 'lost' => {
+  const gameState = useMemo((): GameState => {
     if (cards.length > 0 && cards.every(card => card.isMatched)) return 'won';
     if (triesLeft === 0 && flippedIndices.length === 0) return 'lost';
 

@@ -12,9 +12,10 @@ const controls = style({
 
 const footer = style({
   display: 'flex',
-  gap: vars.sizes.md,
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  gap: vars.sizes.xl,
   width: '100%'
 });
 
@@ -60,13 +61,33 @@ const muteButton = style({
 });
 
 const info = style({
-  fontSize: '1.25rem',
   fontWeight: 600,
+  fontSize: '1.25rem',
   color: COLORS.black,
   backgroundColor: COLORS.rose,
-  padding: `${vars.sizes.xs} ${vars.sizes.md}`,
   borderRadius: vars.sizes.full,
-  border: `2px solid ${COLORS.red}`
+  border: `2px solid ${COLORS.red}`,
+  padding: `${vars.sizes.xs} ${vars.sizes.md}`
 });
 
-export { controls, footer, button, muteButton, info };
+const copyright = style({
+  fontWeight: 500,
+  color: COLORS.white,
+  width: vars.width.muteButton
+});
+
+const author = style({
+  display: 'flex',
+  gap: vars.sizes.xs,
+  alignItems: 'center',
+  color: 'currentColor',
+  textDecoration: 'none',
+  justifyContent: 'center',
+  transition: `color ${vars.transition.duration.sm} ${vars.transition.function}`,
+
+  ':hover': {
+    color: COLORS.blue
+  }
+});
+
+export { controls, footer, button, muteButton, info, copyright, author };
