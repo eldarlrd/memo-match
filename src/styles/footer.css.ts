@@ -31,6 +31,7 @@ const author = style({
   textDecoration: 'none',
   justifyContent: 'center',
   marginTop: vars.sizes.ss,
+  WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `color ${vars.transition.duration.sm} ${vars.transition.function}`,
 
   ':hover': {
