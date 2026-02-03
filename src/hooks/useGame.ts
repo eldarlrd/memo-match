@@ -150,7 +150,7 @@ const useGame = (): {
       const currentSession = sessionRef.current;
       const [firstIndex, secondIndex] = newFlippedIndices;
 
-      if (cards[firstIndex].value === cards[secondIndex].value) {
+      if (cards[firstIndex].value === cards[secondIndex].value)
         setTimeout(() => {
           if (sessionRef.current !== currentSession) return;
           setCards(prev =>
@@ -163,7 +163,7 @@ const useGame = (): {
 
           setFlippedIndices([]);
         }, 500);
-      } else {
+      else {
         setTriesLeft(prev => prev - 1);
         setTimeout(() => {
           if (sessionRef.current !== currentSession) return;
@@ -178,7 +178,7 @@ const useGame = (): {
           );
 
           setFlippedIndices([]);
-        }, 1000);
+        }, 900);
       }
     }
   };

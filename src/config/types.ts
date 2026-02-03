@@ -5,6 +5,7 @@ type GameState = 'won' | 'lost' | 'playing';
 
 interface GameOverProps {
   gameState: GameState;
+  attempts: number;
   onRestart: () => void;
 }
 

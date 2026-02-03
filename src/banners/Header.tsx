@@ -46,7 +46,7 @@ const Header = ({
         ))}
       </div>
 
-      <div className={uiStyles.info}>
+      <div className={headerStyles.info}>
         {emoji} {triesLeft}
       </div>
     </header>

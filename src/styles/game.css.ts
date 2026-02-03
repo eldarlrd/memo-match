@@ -9,29 +9,28 @@ const pulse = keyframes({
 });
 
 const cardFaceBase = style({
-  position: 'absolute',
   width: '100%',
   height: '100%',
-  backfaceVisibility: 'hidden',
   display: 'flex',
   alignItems: 'center',
+  position: 'absolute',
   justifyContent: 'center',
-  borderRadius: vars.sizes.ss,
-  boxShadow:
-    '0 4px 6px -1px rgb(220 38 38 / 0.1), 0 2px 4px -2px rgb(220 38 38 / 0.1)',
-  border: `2px solid ${COLORS.rose}`,
+  boxShadow: vars.shadow.md,
+  borderRadius: vars.sizes.md,
+  backfaceVisibility: 'hidden',
+  border: `${vars.sizes['2xs']} solid ${COLORS.rose}`,
   transition: `background-color ${vars.transition.duration.md} ${vars.transition.function}, border-color ${vars.transition.duration.md} ${vars.transition.function}`
 });
 
 const board = style({
   width: '100%',
   display: 'grid',
-  gap: vars.sizes.md,
+  gap: vars.sizes.sm,
   maxWidth: vars.sizes.lg,
   containerType: 'inline-size',
 
   '@media': {
-    '(max-width: 640px)': {
+    '(max-width: 40rem)': {
       gap: vars.sizes.sm
     }
   }
@@ -67,37 +66,37 @@ const card = style({
   border: 'none',
   cursor: 'pointer',
   background: 'none',
-  aspectRatio: vars.aspectRatio.card,
   position: 'relative',
   perspective: '62.5rem',
+  aspectRatio: vars.aspectRatio.card,
   transition: `transform ${vars.transition.duration.sm} ${vars.transition.function}`,
 
   ':hover': {
-    transform: 'translateY(-2px)'
+    transform: `translateY(${vars.sizes.negative})`
   },
 
   ':focus-visible': {
-    outline: `3px solid white`,
-    outlineOffset: '4px',
-    borderRadius: vars.sizes.ss
+    borderRadius: vars.sizes.md,
+    outlineOffset: vars.sizes.xs,
+    outline: `${vars.sizes['2xs']} solid white`
   }
 });
 
 const skeletonCard = style({
-  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-  borderRadius: vars.sizes.ss,
   width: '100%',
   height: '100%',
-  animation: `${pulse} ${vars.transition.duration.lg} infinite ease-in-out`
+  borderRadius: vars.sizes.md,
+  backgroundColor: COLORS.whiteOpaque,
+  animation: `${pulse} ${vars.transition.duration.lg} infinite ${vars.transition.function}`
 });
 
 const cardInner = style({
-  position: 'relative',
   width: '100%',
   height: '100%',
-  transition: `transform ${vars.transition.duration.md} ${vars.transition.function}`,
+  position: 'relative',
+  borderRadius: vars.sizes.lg,
   transformStyle: 'preserve-3d',
-  borderRadius: vars.sizes.ss
+  transition: `transform ${vars.transition.duration.md} ${vars.transition.function}`
 });
 
 const cardFlipped = style({
@@ -130,11 +129,11 @@ const red = style([
   {
     color: COLORS.white,
     boxSizing: 'border-box',
-    border: `.25rem solid ${COLORS.white}`,
     backgroundColor: COLORS.red,
+    border: `${vars.sizes.xs} solid ${COLORS.white}`,
     backgroundImage: `
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px),
-      repeating-linear-gradient(-45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 10px)
+      repeating-linear-gradient(45deg, ${COLORS.whiteOpaque} 0, ${COLORS.whiteOpaque} ${vars.sizes['2xs']}, transparent ${vars.sizes['2xs']}, transparent ${vars.sizes.md}),
+      repeating-linear-gradient(-45deg, ${COLORS.whiteOpaque} 0, ${COLORS.whiteOpaque} ${vars.sizes['2xs']}, transparent ${vars.sizes['2xs']}, transparent ${vars.sizes.md})
     `
   }
 ]);

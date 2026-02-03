@@ -20,28 +20,31 @@ const modal = style({
   width: '90%',
   display: 'flex',
   textAlign: 'center',
-  gap: vars.sizes.md,
-  flexDirection: 'column',
+  gap: vars.sizes.xl,
   padding: vars.sizes.xl,
+  flexDirection: 'column',
+  boxShadow: vars.shadow.lg,
   maxWidth: vars.width.modal,
+  borderRadius: vars.sizes.lg,
   backgroundColor: COLORS.white,
-  borderRadius: vars.sizes.sm,
-  border: `.25rem solid ${COLORS.red}`,
-  boxShadow:
-    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+  border: `${vars.sizes.xs} solid ${COLORS.red}`
 });
 
 const modalTitle = style({
   margin: 0,
+  display: 'flex',
   fontWeight: 700,
-  fontSize: '2rem',
-  color: COLORS.red
+  color: COLORS.red,
+  gap: vars.sizes.sm,
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: vars.sizes['2xl']
 });
 
 const modalText = style({
   margin: 0,
-  fontSize: '1.25rem',
-  color: COLORS.black
+  color: COLORS.black,
+  fontSize: vars.sizes.gg
 });
 
 export { modalOverlay, modal, modalTitle, modalText };

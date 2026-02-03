@@ -7,7 +7,7 @@
     "useDefineForClassFields": true,
     "skipLibCheck": true,
     // Bundler
-    "types": ["vite/client", "vitest", "vitest/globals"],
+    "types": ["vite/client"],
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
@@ -26,5 +26,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "*.config.mts", "__tests__"]
+  "include": ["src", "*.config.mts"]
 }

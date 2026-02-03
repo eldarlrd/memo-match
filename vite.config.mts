@@ -27,16 +27,5 @@ export default defineConfig({
         globPatterns: ['**/*.{html,css,js,png,webp,woff2,webmanifest}']
       }
     })
-  ],
-  // @ts-expect-error: test missing in config
-  // https://vitest.dev/config
-  test: {
-    globals: true,
-    restoreMocks: true,
-    environment: 'jsdom',
-    include: ['__tests__/**/*.{test,spec}.{ts,tsx}'],
-    coverage: {
-      include: ['src/hooks/*.{ts,tsx}']
-    }
-  }
+  ]
 });

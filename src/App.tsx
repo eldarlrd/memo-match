@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react';
 
-import '@/styles/global.css.ts';
 import Footer from '@/banners/Footer.tsx';
 import Header from '@/banners/Header.tsx';
 import Board from '@/components/Board.tsx';
+import { TRIES_BY_SIZE } from '@/config/rules.ts';
 import useGame from '@/hooks/useGame.ts';
 import GameOver from '@/modals/GameOver.tsx';
-import { container } from '@/styles/app.css.ts';
+import { container } from '@/styles/global.css.ts';
 import '@fontsource-variable/dynapuff/index.css';
 import 'modern-normalize/modern-normalize.css';
 
@@ -42,6 +42,7 @@ const App = (): ReactElement => {
 
       <GameOver
         gameState={gameState}
+        attempts={TRIES_BY_SIZE[gridSize] - triesLeft}
         onRestart={() => {
           initializeGame(gridSize);
         }}

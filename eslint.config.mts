@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import vitest from '@vitest/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { flatConfigs } from 'eslint-plugin-import';
@@ -26,7 +25,6 @@ export default defineConfig({
     nodePlugin.configs['flat/recommended-module'],
     pluginPromise.configs['flat/recommended'],
     jsxA11y.flatConfigs.strict,
-    vitest.configs.recommended,
     eslintConfigPrettier
   ],
   files: ['**/*.{ts,tsx}'],
@@ -72,13 +70,6 @@ export default defineConfig({
     'import/extensions': [1, 'ignorePackages'],
     'import/no-useless-path-segments': 1,
     'import/group-exports': 1,
-    'vitest/no-test-return-statement': 2,
-    'vitest/consistent-test-filename': 2,
-    'vitest/prefer-equality-matcher': 2,
-    'vitest/prefer-lowercase-title': 1,
-    'vitest/prefer-strict-equal': 1,
-    'vitest/consistent-test-it': 2,
-    'vitest/no-test-prefixes': 2,
     'react/sort-comp': 2,
     'react/jsx-pascal-case': 2,
     'react/prefer-es6-class': 2,

@@ -1,4 +1,4 @@
-import { globalStyle, keyframes } from '@vanilla-extract/css';
+import { globalStyle, keyframes, style } from '@vanilla-extract/css';
 
 import { COLORS, vars } from '@/styles/theme.css.ts';
 
@@ -21,4 +21,13 @@ globalStyle('#root', {
   minHeight: '100dvh',
   fontFamily: "'DynaPuff Variable', sans-serif",
   padding: `${vars.sizes['2xl']} ${vars.sizes.md}`
+});
+
+export const container = style({
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  gap: vars.sizes.xl,
+  flexDirection: 'column',
+  justifyContent: 'space-between'
 });

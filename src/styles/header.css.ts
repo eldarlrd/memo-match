@@ -26,4 +26,14 @@ const logo = style({
   aspectRatio: vars.aspectRatio.logo
 });
 
-export { header, title, logo };
+const info = style({
+  fontWeight: 600,
+  color: COLORS.black,
+  fontSize: vars.sizes.gg,
+  borderRadius: vars.sizes.md,
+  backgroundColor: COLORS.rose,
+  padding: `${vars.sizes.xs} ${vars.sizes.md}`,
+  border: `${vars.sizes['2xs']} solid ${COLORS.red}`
+});
+
+export { header, title, logo, info };

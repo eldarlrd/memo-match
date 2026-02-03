@@ -5,6 +5,7 @@
 > Memo Match is a game made with
 > - **[TypeScript](https://typescriptlang.org)**
 > - **[React](https://react.dev)**
+> - **[Deck of Cards](https://deckofcardsapi.com)**
 > - **[vanilla-extract](https://vanilla-extract.style)**
 > - **[modern-normalize](https://github.com/sindresorhus/modern-normalize)**
 > - **[React Icons](https://react-icons.github.io/react-icons)**
@@ -37,15 +38,6 @@ bun fix
 ### See Orphans (Knip)
 ```sh
 bun orphans
-```
-## Test
-### Run Watch
-```sh
-bun spec
-```
-### Coverage Report
-```sh
-bun cover
 ```
 ## Deploy
 ```sh

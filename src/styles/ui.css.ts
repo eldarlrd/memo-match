@@ -4,41 +4,31 @@ import { COLORS, vars } from '@/styles/theme.css.ts';
 
 const controls = style({
   display: 'flex',
-  gap: vars.sizes.md,
-  alignItems: 'center',
   flexWrap: 'wrap',
+  gap: vars.sizes.sm,
+  alignItems: 'center',
   justifyContent: 'center'
 });
 
-const footer = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: vars.sizes.xl,
-  width: '100%'
-});
-
 const button = style({
-  padding: `${vars.sizes.sm} ${vars.sizes.lg}`,
-  backgroundColor: COLORS.red,
   color: 'white',
   border: 'none',
-  borderRadius: vars.sizes.full,
-  cursor: 'pointer',
-  fontWeight: 600,
-  fontSize: '1rem',
-  transition: `all ${vars.transition.duration.sm} ${vars.transition.function}`,
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   display: 'flex',
+  fontWeight: 600,
+  cursor: 'pointer',
   gap: vars.sizes.xs,
   alignItems: 'center',
   justifyContent: 'center',
+  boxShadow: vars.shadow.sm,
+  backgroundColor: COLORS.red,
+  borderRadius: vars.sizes.md,
+  padding: `${vars.sizes.sm} ${vars.sizes.lg}`,
+  transition: `all ${vars.transition.duration.sm} ${vars.transition.function}`,
 
   ':hover': {
+    boxShadow: vars.shadow.md,
     backgroundColor: COLORS.maroon,
-    transform: 'translateY(-1px)',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.15)'
+    transform: `translateY(${vars.sizes.negative})`
   },
 
   ':active': {
@@ -46,48 +36,11 @@ const button = style({
   },
 
   ':disabled': {
-    backgroundColor: COLORS.blue,
-    cursor: 'not-allowed',
     transform: 'none',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    cursor: 'not-allowed',
+    backgroundColor: COLORS.blue
   }
 });
 
-const muteButton = style({
-  width: vars.width.muteButton,
-  height: vars.width.muteButton,
-  padding: 0,
-  fontSize: '1.25rem'
-});
-
-const info = style({
-  fontWeight: 600,
-  fontSize: '1.25rem',
-  color: COLORS.black,
-  backgroundColor: COLORS.rose,
-  borderRadius: vars.sizes.full,
-  border: `2px solid ${COLORS.red}`,
-  padding: `${vars.sizes.xs} ${vars.sizes.md}`
-});
-
-const copyright = style({
-  fontWeight: 500,
-  color: COLORS.white,
-  width: vars.width.muteButton
-});
-
-const author = style({
-  display: 'flex',
-  gap: vars.sizes.xs,
-  alignItems: 'center',
-  color: 'currentColor',
-  textDecoration: 'none',
-  justifyContent: 'center',
-  transition: `color ${vars.transition.duration.sm} ${vars.transition.function}`,
-
-  ':hover': {
-    color: COLORS.blue
-  }
-});
-
-export { controls, footer, button, muteButton, info, copyright, author };
+export { controls, button };

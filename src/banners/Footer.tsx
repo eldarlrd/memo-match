@@ -4,21 +4,22 @@ import { PiSwapBold } from 'react-icons/pi';
 import { VscGithub } from 'react-icons/vsc';
 
 import type { FooterProps } from '@/config/types.ts';
-import * as styles from '@/styles/ui.css.ts';
+import * as footerStyles from '@/styles/footer.css.ts';
+import * as uiStyles from '@/styles/ui.css.ts';
 
 const Footer = ({
   isMuted,
   onReset,
   onToggleMute
 }: FooterProps): ReactElement => (
-  <footer className={styles.footer}>
-    <div className={styles.controls}>
-      <button className={styles.button} onClick={onReset}>
+  <footer className={footerStyles.footer}>
+    <div className={uiStyles.controls}>
+      <button className={uiStyles.button} onClick={onReset}>
         <PiSwapBold /> Shuffle
       </button>
 
       <button
-        className={`${styles.button} ${styles.muteButton}`}
+        className={`${uiStyles.button} ${footerStyles.muteButton}`}
         onClick={onToggleMute}>
         {isMuted ?
           <ImVolumeMute2 />
@@ -26,13 +27,13 @@ const Footer = ({
       </button>
     </div>
 
-    <div className={styles.copyright}>
+    <div className={footerStyles.copyright}>
       © 2026{' '}
       <a
         title='Source'
         target='_blank'
         type='text/html'
-        className={styles.author}
+        className={footerStyles.author}
         rel='author external noreferrer'
         href='https://github.com/eldarlrd/memo-match'>
         <VscGithub /> eldarlrd
