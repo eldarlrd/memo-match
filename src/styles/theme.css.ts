@@ -10,6 +10,7 @@ const COLORS = {
   blue: '#1d4ed8', // blue-700
   ginger: '#fb923c', // orange-400
   orange: '#ea580c', // orange-600
+  whiteTransparent: '#fafafa0d', // neutral-50/5%
   blackOpaque: '#1717171a', // neutral-900/10%
   whiteOpaque: '#fafafa33', // neutral-50/20%
   brownOpaque: '#43140766' // orange-950/40%

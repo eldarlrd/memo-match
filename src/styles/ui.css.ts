@@ -23,6 +23,7 @@ const button = style({
   backgroundColor: COLORS.red,
   borderRadius: vars.sizes.md,
   padding: `${vars.sizes.sm} ${vars.sizes.lg}`,
+  WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `all ${vars.transition.duration.sm} ${vars.transition.function}`,
 
   ':hover': {

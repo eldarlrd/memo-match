@@ -69,6 +69,7 @@ const card = style({
   position: 'relative',
   perspective: '62.5rem',
   aspectRatio: vars.aspectRatio.card,
+  WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `transform ${vars.transition.duration.sm} ${vars.transition.function}`,
 
   ':hover': {
