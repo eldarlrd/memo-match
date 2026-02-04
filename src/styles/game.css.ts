@@ -72,8 +72,12 @@ const card = style({
   WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `transform ${vars.transition.duration.sm} ${vars.transition.function}`,
 
-  ':hover': {
-    transform: `translateY(${vars.sizes.negative})`
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        transform: `translateY(${vars.sizes.negative})`
+      }
+    }
   },
 
   ':focus-visible': {

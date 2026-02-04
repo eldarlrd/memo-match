@@ -10,10 +10,8 @@ const GameOver = ({
   gameState,
   attempts,
   onRestart
-}: GameOverProps): ReactElement | null => {
-  if (gameState !== 'won' && gameState !== 'lost') return null;
-
-  return (
+}: GameOverProps): ReactElement | null =>
+  gameState !== 'playing' ?
     <div className={modalStyles.modalOverlay}>
       <div className={modalStyles.modal}>
         <h2 className={modalStyles.modalTitle}>
@@ -39,7 +37,6 @@ const GameOver = ({
         </button>
       </div>
     </div>
-  );
-};
+  : null;
 
 export default GameOver;

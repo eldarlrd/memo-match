@@ -20,16 +20,21 @@ const button = style({
   alignItems: 'center',
   justifyContent: 'center',
   boxShadow: vars.shadow.sm,
+  height: vars.width.button,
   backgroundColor: COLORS.red,
   borderRadius: vars.sizes.md,
-  padding: `${vars.sizes.sm} ${vars.sizes.lg}`,
+  padding: `0 ${vars.sizes.lg}`,
   WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `all ${vars.transition.duration.sm} ${vars.transition.function}`,
 
-  ':hover': {
-    boxShadow: vars.shadow.md,
-    backgroundColor: COLORS.maroon,
-    transform: `translateY(${vars.sizes.negative})`
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        boxShadow: vars.shadow.md,
+        backgroundColor: COLORS.maroon,
+        transform: `translateY(${vars.sizes.negative})`
+      },
+    }
   },
 
   ':active': {

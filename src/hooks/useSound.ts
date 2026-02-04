@@ -41,7 +41,7 @@ const useSound = (
       const cachedBuffer = buffersRef.current.get(type);
 
       if (cachedBuffer) playBuffer(cachedBuffer);
-      else {
+      else
         void fetch(SFX_MAP[type])
           .then(res => res.arrayBuffer())
           .then(data => ctx.decodeAudioData(data))
@@ -54,7 +54,6 @@ const useSound = (
           .catch((error: unknown) => {
             if (error instanceof Error) console.error(ERROR_SOUND, error);
           });
-      }
     },
     [isMuted]
   );

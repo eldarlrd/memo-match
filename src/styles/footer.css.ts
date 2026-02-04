@@ -13,8 +13,8 @@ const footer = style({
 
 const muteButton = style({
   padding: '0 !important',
-  width: vars.width.muteButton,
-  height: vars.width.muteButton
+  width: vars.width.button,
+  height: vars.width.button
 });
 
 const copyright = style({
@@ -34,8 +34,12 @@ const author = style({
   WebkitTapHighlightColor: COLORS.whiteTransparent,
   transition: `color ${vars.transition.duration.sm} ${vars.transition.function}`,
 
-  ':hover': {
-    color: COLORS.blue
+  '@media': {
+    '(hover: hover)': {
+      ':hover': {
+        color: COLORS.blue
+      }
+    }
   }
 });
 

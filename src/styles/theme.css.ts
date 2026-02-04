@@ -39,9 +39,9 @@ const vars = createGlobalTheme(':root', {
     modal: '25rem',
     board4: '31rem',
     board6: '44rem',
+    button: '2.25rem',
     board4Mobile: '20rem',
     board6Mobile: '28rem',
-    muteButton: '2.25rem',
     header: 'clamp(3rem, 10vw, 4rem)'
   },
 
