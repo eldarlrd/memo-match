@@ -29,6 +29,20 @@ const generateCards = (size: GridSize): Card[] => {
   }));
 };
 
+const getStoredGridSize = (): GridSize => {
+  const storedGridSize = localStorage.getItem('gridSize');
+
+  return storedGridSize === '4' || storedGridSize === '6' ?
+      (Number(storedGridSize) as GridSize)
+    : 4;
+};
+
+const getStoredMuted = (): boolean => {
+  const stored = localStorage.getItem('isMuted');
+
+  return stored ? (JSON.parse(stored) as boolean) : false;
+};
+
 const useGame = (): {
   gridSize: 4 | 6;
   cards: Card[];
@@ -42,11 +56,15 @@ const useGame = (): {
   initializeGame: (size: GridSize) => void;
   toggleMute: () => void;
 } => {
-  const [gridSize, setGridSize] = useState<GridSize>(4);
-  const [cards, setCards] = useState<Card[]>(() => generateCards(4));
+  const [isMuted, setIsMuted] = useState(getStoredMuted);
+  const [gridSize, setGridSize] = useState<GridSize>(getStoredGridSize);
+  const [cards, setCards] = useState<Card[]>(() =>
+    generateCards(getStoredGridSize())
+  );
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
-  const [triesLeft, setTriesLeft] = useState<number>(TRIES_BY_SIZE[4]);
-  const [isMuted, setIsMuted] = useState(false);
+  const [triesLeft, setTriesLeft] = useState<number>(
+    TRIES_BY_SIZE[getStoredGridSize()]
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   const { playSound } = useSound(isMuted);
@@ -90,6 +108,13 @@ const useGame = (): {
     }
   }, [gameState, playSound]);
 
+  const resetCardStates = useCallback((): void => {
+    setCards(prev =>
+      prev.map(card => ({ ...card, isFlipped: false, isMatched: false }))
+    );
+    setFlippedIndices([]);
+  }, []);
+
   const initializeGame = useCallback(
     (size: GridSize): void => {
       sessionRef.current++;
@@ -98,12 +123,10 @@ const useGame = (): {
       isResettingRef.current = true;
       setIsLoading(true);
       setGridSize(size);
+      localStorage.setItem('gridSize', String(size));
       setTriesLeft(TRIES_BY_SIZE[size]);
 
-      setCards(prev =>
-        prev.map(card => ({ ...card, isFlipped: false, isMatched: false }))
-      );
-      setFlippedIndices([]);
+      resetCardStates();
       playSound('reset');
 
       const loadNewCards = async (): Promise<void> => {
@@ -123,72 +146,97 @@ const useGame = (): {
         void loadNewCards();
       }, 300);
     },
-    [playSound, preloadImages]
+    [playSound, preloadImages, resetCardStates]
   );
 
-  const handleCardClick = (index: number): void => {
-    if (
-      gameState !== 'playing' ||
-      isResettingRef.current ||
-      isLoading ||
-      flippedIndices.length === 2 ||
-      cards[index].isFlipped ||
-      cards[index].isMatched
-    )
-      return;
+  const scheduleIfCurrentSession = useCallback(
+    (currentSession: number, delayMs: number, action: () => void): void => {
+      setTimeout(() => {
+        if (sessionRef.current !== currentSession) return;
+        action();
+      }, delayMs);
+    },
+    []
+  );
 
-    playSound('reveal');
-    setCards(prev =>
-      prev.map((card, i) => (i === index ? { ...card, isFlipped: true } : card))
-    );
+  const handleCardClick = useCallback(
+    (index: number): void => {
+      const shouldIgnoreClick =
+        gameState !== 'playing' ||
+        isResettingRef.current ||
+        isLoading ||
+        flippedIndices.length === 2 ||
+        cards[index].isFlipped ||
+        cards[index].isMatched;
 
-    const newFlippedIndices = [...flippedIndices, index];
+      if (shouldIgnoreClick) return;
 
-    setFlippedIndices(newFlippedIndices);
+      playSound('reveal');
+      setCards(prev =>
+        prev.map((card, i) =>
+          i === index ? { ...card, isFlipped: true } : card
+        )
+      );
 
-    if (newFlippedIndices.length === 2) {
-      const currentSession = sessionRef.current;
-      const [firstIndex, secondIndex] = newFlippedIndices;
+      const newFlippedIndices = [...flippedIndices, index];
 
-      if (cards[firstIndex].value === cards[secondIndex].value)
-        setTimeout(() => {
-          if (sessionRef.current !== currentSession) return;
-          setCards(prev =>
-            prev.map((card, i) =>
-              i === firstIndex || i === secondIndex ?
-                { ...card, isMatched: true }
-              : card
-            )
-          );
+      setFlippedIndices(newFlippedIndices);
 
-          setFlippedIndices([]);
-        }, 500);
-      else {
-        setTriesLeft(prev => prev - 1);
-        setTimeout(() => {
-          if (sessionRef.current !== currentSession) return;
+      if (newFlippedIndices.length === 2) {
+        const currentSession = sessionRef.current;
+        const [firstIndex, secondIndex] = newFlippedIndices;
 
-          playSound('reveal');
-          setCards(prev =>
-            prev.map((card, i) =>
-              i === firstIndex || i === secondIndex ?
-                { ...card, isFlipped: false }
-              : card
-            )
-          );
+        if (cards[firstIndex].value === cards[secondIndex].value) {
+          scheduleIfCurrentSession(currentSession, 500, () => {
+            setCards(prev =>
+              prev.map((card, i) =>
+                i === firstIndex || i === secondIndex ?
+                  { ...card, isMatched: true }
+                : card
+              )
+            );
 
-          setFlippedIndices([]);
-        }, 900);
+            setFlippedIndices([]);
+          });
+        } else {
+          setTriesLeft(prev => prev - 1);
+          scheduleIfCurrentSession(currentSession, 900, () => {
+            playSound('reveal');
+            setCards(prev =>
+              prev.map((card, i) =>
+                i === firstIndex || i === secondIndex ?
+                  { ...card, isFlipped: false }
+                : card
+              )
+            );
+
+            setFlippedIndices([]);
+          });
+        }
       }
-    }
-  };
+    },
+    [
+      cards,
+      flippedIndices,
+      gameState,
+      isLoading,
+      playSound,
+      scheduleIfCurrentSession
+    ]
+  );
 
   const handleSizeChange = (size: GridSize): void => {
     initializeGame(size);
   };
 
   const toggleMute = (): void => {
-    setIsMuted(prev => !prev);
+    setIsMuted(prev => {
+      const newValue = !prev;
+
+      localStorage.setItem('isMuted', JSON.stringify(newValue));
+
+      return newValue;
+    });
   };
 
   return {

@@ -33,7 +33,7 @@ const button = style({
         boxShadow: vars.shadow.md,
         backgroundColor: COLORS.maroon,
         transform: `translateY(${vars.sizes.negative})`
-      },
+      }
     }
   },
 
@@ -42,10 +42,10 @@ const button = style({
   },
 
   ':disabled': {
-    transform: 'none',
-    boxShadow: 'none',
     cursor: 'not-allowed',
-    backgroundColor: COLORS.blue
+    transform: 'none !important',
+    boxShadow: 'none !important',
+    backgroundColor: `${COLORS.blue} !important`
   }
 });
 
